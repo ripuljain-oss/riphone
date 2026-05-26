@@ -6,12 +6,31 @@ interface Props {
   title: string;
   description?: string;
   current?: '/' | '/archive' | '/feed.xml';
+  ogType?: 'website' | 'article';
+  ogImage?: string;
+  publishedTime?: string;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
-const { title, description, current } = Astro.props;
+const {
+  title,
+  description,
+  current,
+  ogType,
+  ogImage,
+  publishedTime,
+  jsonLd,
+} = Astro.props;
 ---
 
-<Base title={title} description={description}>
+<Base
+  title={title}
+  description={description}
+  ogType={ogType}
+  ogImage={ogImage}
+  publishedTime={publishedTime}
+  jsonLd={jsonLd}
+>
   <main id="main" class="page">
     <Mast current={current} />
     <div class="grid">

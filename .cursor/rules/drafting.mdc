@@ -27,6 +27,7 @@ asks for **drafts** — not finished publish-ready copy without review.
 ```yaml
 ---
 title: "Sharp Title Here"
+description: "One-line meta summary for search and AI (optional; auto-generated if omitted)"
 date: 2026-05-25T20:00:00Z
 # include time so newest posts sort to top deterministically
 type: linked          # essay | linked | notes | review

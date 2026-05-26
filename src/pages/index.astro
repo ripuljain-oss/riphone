@@ -4,6 +4,7 @@ import Post from '../components/Post.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import { SITE } from '../site';
 import { getAllPosts, postPath, tagCounts } from '../lib/posts';
+import { webSiteJsonLd } from '../lib/seo';
 
 const posts = await getAllPosts();
 const feedPosts = posts.slice(0, 10);
@@ -11,7 +12,12 @@ const recent = posts.slice(0, 5);
 const topTags = tagCounts(posts).slice(0, 4);
 ---
 
-<PageWithSidebar title={SITE.name} current="/">
+<PageWithSidebar
+  title={SITE.name}
+  description={SITE.description}
+  jsonLd={webSiteJsonLd()}
+  current="/"
+>
   <aside slot="sidebar" class="sidebar" aria-label="Site index">
     <p class="sidebar__h">Recent</p>
     <ul>

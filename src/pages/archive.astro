@@ -3,6 +3,7 @@ import PageWithSidebar from '../layouts/PageWithSidebar.astro';
 import ArchiveRow from '../components/ArchiveRow.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import { SITE } from '../site';
+import { collectionPageJsonLd } from '../lib/seo';
 import {
   getAllPosts,
   getPostsFiltered,
@@ -37,7 +38,12 @@ const filters = [
 ];
 ---
 
-<PageWithSidebar title="Archive" description={`Every ${SITE.name} post.`} current="/archive">
+<PageWithSidebar
+  title="Archive"
+  description={`Every ${SITE.name} post.`}
+  jsonLd={collectionPageJsonLd('Archive', '/archive', `Every ${SITE.name} post.`)}
+  current="/archive"
+>
   <aside slot="sidebar" class="sidebar" aria-label="Archive index">
     <p class="sidebar__h">Jump to</p>
     <ul>

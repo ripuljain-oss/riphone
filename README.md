@@ -39,6 +39,18 @@ included anyway if Cloudflare runs that wizard.
 
 Custom domain: **riphone.org** → add in Pages → Custom domains.
 
+## SEO / AEO
+
+After deploy, verify:
+
+- `https://riphone.org/robots.txt`
+- `https://riphone.org/sitemap-index.xml`
+- `https://riphone.org/llms.txt` (auto-generated; lists all posts)
+- `https://riphone.org/feed.xml`
+
+Submit the sitemap in [Google Search Console](https://search.google.com/search-console).
+Each post supports optional `description` in frontmatter for meta tags and JSON-LD.
+
 ## Content
 
 Posts live in `src/content/posts/` as MDX. See `.cursor/rules/content.mdc`

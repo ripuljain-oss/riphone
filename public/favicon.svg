@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="riphone">
+  <rect width="32" height="32" fill="#fafafa"/>
+  <rect x="6" y="8" width="5" height="16" fill="#d97757"/>
+  <text x="14" y="21" font-family="ui-monospace, monospace" font-size="11" font-weight="600" fill="#14151a">r</text>
+</svg>

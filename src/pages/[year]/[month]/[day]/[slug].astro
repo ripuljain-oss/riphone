@@ -3,6 +3,7 @@ import PageWithSidebar from '../../../../layouts/PageWithSidebar.astro';
 import Post from '../../../../components/Post.astro';
 import SiteFooter from '../../../../components/SiteFooter.astro';
 import { getAllPosts, postPath, postSlug } from '../../../../lib/posts';
+import { blogPostingJsonLd, postDescription } from '../../../../lib/seo';
 
 export async function getStaticPaths() {
   const posts = await getAllPosts();
@@ -21,9 +22,18 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
+const description = postDescription(entry);
+const publishedTime = entry.data.date.toISOString();
 ---
 
-<PageWithSidebar title={entry.data.title} current="/">
+<PageWithSidebar
+  title={entry.data.title}
+  description={description}
+  ogType="article"
+  publishedTime={publishedTime}
+  jsonLd={blogPostingJsonLd(entry, description)}
+  current="/"
+>
   <aside slot="sidebar" class="sidebar" aria-label="Post">
     <p class="sidebar__h">Back</p>
     <ul>
