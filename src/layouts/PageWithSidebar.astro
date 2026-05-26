@@ -1,0 +1,24 @@
+---
+import Base from './Base.astro';
+import Mast from '../components/Mast.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  current?: '/' | '/archive' | '/feed.xml';
+}
+
+const { title, description, current } = Astro.props;
+---
+
+<Base title={title} description={description}>
+  <main id="main" class="page">
+    <Mast current={current} />
+    <div class="grid">
+      <slot name="sidebar" />
+      <section class="content">
+        <slot />
+      </section>
+    </div>
+  </main>
+</Base>

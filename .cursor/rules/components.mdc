@@ -1,0 +1,42 @@
+---
+description: Component patterns — recurring blocks and class names
+alwaysApply: true
+---
+
+# Components
+
+~8 primitives consuming tokens. Names match `handoff/reference/styles.css`.
+
+## 1. `<Mast>`
+
+- Wordmark: `▮ riphone` (`::before` in accent; no SVG)
+- Nav: `/latest`, `/archive`, `/feed.xml`
+- `aria-current="page"` on active link
+- 2px ink underline; 40px margin-bottom
+
+## 2. `<PageGrid>`
+
+- `200px 1fr`, 56px gap; collapses at 720px (sidebar `order: 2`)
+
+## 3. `<Sidebar>`
+
+- Mono 12px, meta color; labeled lists (`Recent`, `Tags`, etc.)
+
+## 4. `<Post>`
+
+- Dateline + title (+ `★` when `star: true` on originals)
+- `.post + .post` hairline separator
+- Serif body; blockquotes: 2px accent left rule
+
+## 5. `<ArchiveRow>`
+
+- `[56px date][1fr title][auto tag]` — mono, uppercase tag
+
+## 6. `<RateRow>` / 7. `<AvailabilityCal>` / 8. `<CTA>`
+
+- Reserved for `/sponsor` when enabled; page is off in v1. See `handoff/PAGES.md`.
+
+## Reusability
+
+New UI → existing primitives + tokens first. New component → document here
+before building.

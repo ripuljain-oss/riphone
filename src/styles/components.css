@@ -1,0 +1,305 @@
+/* riphone — component styles (from handoff reference).
+ * Consumes tokens from ../tokens.css. Class names are framework-agnostic.
+ * Translate to your component library of choice; keep the tokens canonical.
+ */
+
+/* ── reset ─────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-serif);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  font-feature-settings: 'kern' 1, 'liga' 1;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; height: auto; display: block; }
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: var(--space-4);
+  z-index: 100;
+  padding: var(--space-2) var(--space-4);
+  font-family: var(--font-mono);
+  font-size: var(--fs-nav);
+  background: var(--color-fg);
+  color: var(--color-bg);
+}
+.skip-link:focus {
+  left: var(--space-4);
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ── layout · page shell ───────────────────────────────────── */
+.page {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: var(--page-pad-y) var(--page-pad-x) var(--page-pad-bottom);
+}
+
+/* ── masthead ──────────────────────────────────────────────── */
+.mast {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  padding-bottom: var(--space-5);
+  border-bottom: var(--rule-strong);
+  margin-bottom: var(--space-10);
+}
+.mast__wordmark {
+  font-family: var(--font-mono);
+  font-size: var(--fs-wordmark);
+  line-height: var(--lh-wordmark);
+  font-weight: var(--fw-semi);
+  letter-spacing: -0.01em;
+}
+.mast__wordmark::before {
+  content: "▮";
+  color: var(--color-accent);
+  margin-right: 6px;
+}
+.mast__nav {
+  display: flex;
+  gap: var(--space-6);
+  font-family: var(--font-mono);
+  font-size: var(--fs-nav);
+}
+.mast__nav a {
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+  transition: color var(--t-fast), border-color var(--t-fast);
+}
+.mast__nav a:hover,
+.mast__nav a[aria-current="page"] {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
+
+/* ── two-column grid (sidebar + content) ──────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: var(--sidebar-w) 1fr;
+  gap: var(--grid-gap);
+}
+@media (max-width: 720px) {
+  .grid { grid-template-columns: 1fr; }
+  .sidebar { order: 2; }
+}
+
+/* ── sidebar ───────────────────────────────────────────────── */
+.sidebar {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sidebar);
+  color: var(--color-meta);
+}
+.sidebar__h {
+  color: var(--color-fg);
+  margin: 0 0 var(--space-3);
+  font-weight: var(--fw-semi);
+}
+.sidebar ul {
+  list-style: none;
+  margin: 0 0 var(--space-8);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.sidebar a {
+  color: var(--color-fg-muted);
+  transition: color var(--t-fast);
+}
+.sidebar a:hover { color: var(--color-accent); }
+
+/* ── content column + posts ────────────────────────────────── */
+.content { max-width: var(--content-max); }
+.content p { margin: 0 0 var(--space-4); }
+
+.post + .post {
+  margin-top: var(--space-11);
+  padding-top: var(--space-10);
+  border-top: var(--rule-thin);
+}
+.post__dateline {
+  font-family: var(--font-mono);
+  font-size: var(--fs-dateline);
+  color: var(--color-meta);
+  text-transform: uppercase;
+  margin-bottom: var(--space-3);
+}
+.post__title {
+  font-family: var(--font-mono);
+  font-size: var(--fs-title);
+  font-weight: var(--fw-semi);
+  line-height: var(--lh-title);
+  letter-spacing: -0.01em;
+  margin: 0 0 var(--space-4);
+  color: var(--color-fg);
+}
+.post__title a:hover { color: var(--color-accent); }
+.post__star {
+  color: var(--color-accent);
+  font-size: 13px;
+  margin-left: 4px;
+}
+.post__body a.link,
+a.link {
+  color: var(--color-link);
+  border-bottom: 1px solid var(--color-link);
+  transition: opacity var(--t-fast);
+}
+.post__body a.link:hover { opacity: 0.7; }
+
+blockquote {
+  border-left: 2px solid var(--color-accent);
+  padding-left: var(--space-5);
+  margin: var(--space-5) 0;
+  color: var(--color-fg-muted);
+}
+
+/* ── archive list ──────────────────────────────────────────── */
+.archive-year {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: var(--fw-semi);
+  color: var(--color-accent);
+  margin: 0;
+}
+.archive-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-4) 0 var(--space-10);
+}
+.archive-list li {
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  gap: var(--space-4);
+  padding: var(--space-2) 0;
+  align-items: baseline;
+}
+.archive-list li + li { border-top: var(--rule-thin); }
+.archive-list__date {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-sm);
+  color: var(--color-meta);
+}
+.archive-list__title {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--color-fg);
+}
+.archive-list__title:hover { color: var(--color-accent); }
+.archive-list__tag {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--color-meta);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ── sponsorship · rate rows ───────────────────────────────── */
+.rate {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-5);
+  padding: var(--space-5) 0;
+  align-items: baseline;
+}
+.rate + .rate { border-top: var(--rule-thin); }
+.rate__price {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  font-weight: var(--fw-semi);
+  color: var(--color-accent);
+}
+
+/* ── sponsorship · availability calendar ───────────────────── */
+.cal {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin: var(--space-5) 0 var(--space-8);
+}
+.cal__cell {
+  padding: var(--space-4) var(--space-3);
+  border: 1px solid var(--color-fg);
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-sm);
+}
+.cal__cell--sold      { opacity: 0.4; text-decoration: line-through; }
+.cal__cell--available { /* default */ }
+.cal__cell--next      {
+  background: var(--color-accent);
+  color: var(--color-accent-fg);
+  border-color: var(--color-accent);
+}
+
+/* ── CTA button ────────────────────────────────────────────── */
+.cta {
+  display: inline-block;
+  padding: var(--space-4) var(--space-6);
+  font-family: var(--font-mono);
+  font-size: var(--fs-cta);
+  background: var(--color-fg);
+  color: var(--color-bg);
+  border: 1px solid var(--color-fg);
+  margin-top: var(--space-3);
+  transition: background var(--t-base), color var(--t-base);
+}
+.cta:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-accent-fg);
+}
+
+/* ── footer ────────────────────────────────────────────────── */
+.site-footer {
+  margin-top: var(--space-20);
+  padding-top: var(--space-8);
+  border-top: var(--rule-thin);
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-sm);
+  color: var(--color-meta);
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ── page-title block (Archive / Sponsorship headers) ─────── */
+.page-title__eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-sm);
+  color: var(--color-meta);
+  text-transform: uppercase;
+  margin-bottom: var(--space-2);
+}
+.page-title__h1 {
+  font-family: var(--font-mono);
+  font-size: var(--fs-h1);
+  line-height: var(--lh-h1);
+  font-weight: var(--fw-semi);
+  margin: 0 0 var(--space-2);
+  color: var(--color-fg);
+}
+.page-title__desc {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  color: var(--color-fg-muted);
+  margin: 0 0 var(--space-10);
+}
+
+/* ── section heading inside content ──────────────────────── */
+.section-h {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: var(--fw-semi);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: var(--space-8) 0 var(--space-2);
+  color: var(--color-fg);
+}

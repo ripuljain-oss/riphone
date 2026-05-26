@@ -1,0 +1,20 @@
+---
+import { SITE } from '../site';
+
+interface Props {
+  route?: string;
+  version?: string;
+}
+
+const { route, version } = Astro.props;
+const year = new Date().getFullYear();
+const right = version ? `${SITE.name} · ${version}` : route ? `${SITE.name} · ${route}` : SITE.name;
+---
+
+<footer class="site-footer">
+  <span>
+    © {year}{' '}
+    <a class="link" href={SITE.xUrl}>{SITE.xHandle}</a>
+  </span>
+  <span>{right}</span>
+</footer>

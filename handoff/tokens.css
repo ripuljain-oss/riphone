@@ -1,0 +1,105 @@
+/* ripblog — design tokens (Mono Ink + Terracotta)
+ *
+ * These tokens are the single source of truth for the entire site.
+ * Component CSS should consume them via var(--...) only — no inline hex.
+ *
+ * Two scales here:
+ *   1. Primitive tokens (color values, raw px sizes) — rarely change.
+ *   2. Semantic tokens (--color-bg, --space-page-y, etc) — what UI consumes.
+ *
+ * Override the accent in one place only (--color-accent) if the brand
+ * ever pivots away from terracotta. Everything else stays put.
+ */
+
+:root {
+  /* ── color · primitive ───────────────────────────────────── */
+  --c-warm-white:   #fafafa;
+  --c-ink:          #14151a;
+  --c-ink-2:        #4a4f57;
+  --c-muted:        #6b6f78;
+  --c-terracotta:   #d97757;
+  --c-rule:         rgba(20, 21, 26, 0.12);
+
+  /* ── color · semantic ────────────────────────────────────── */
+  --color-bg:           var(--c-warm-white);
+  --color-fg:           var(--c-ink);
+  --color-fg-muted:     var(--c-ink-2);
+  --color-meta:         var(--c-muted);
+  --color-rule:         var(--c-rule);
+  --color-rule-strong:  var(--c-ink);
+  --color-accent:       var(--c-terracotta);
+  --color-accent-fg:    #ffffff;       /* foreground for solid-accent buttons */
+  --color-link:         var(--color-accent);
+
+  /* ── typography · families ───────────────────────────────── */
+  --font-mono:  'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo,
+                Consolas, monospace;
+  --font-serif: 'Newsreader', 'Source Serif Pro', Georgia,
+                'Times New Roman', serif;
+
+  /* ── typography · scale (px values, line-heights unitless) ── */
+  --fs-body:        17px;   --lh-body:    1.6;
+  --fs-wordmark:    20px;   --lh-wordmark: 1.0;
+  --fs-nav:         12px;
+  --fs-title:       18px;   --lh-title:   1.3;
+  --fs-h1:          22px;   --lh-h1:      1.35;
+  --fs-dateline:    11px;
+  --fs-sidebar:     12px;
+  --fs-mono-sm:     11px;
+  --fs-cta:         13px;
+
+  /* ── typography · weight ─────────────────────────────────── */
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-semi:    600;
+
+  /* ── space (a 4px base scale; do not invent values) ──────── */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-11: 44px;
+  --space-12: 48px;
+  --space-14: 56px;
+  --space-20: 80px;
+
+  /* ── layout ──────────────────────────────────────────────── */
+  --page-max:        920px;
+  --content-max:     580px;
+  --sidebar-w:       200px;
+  --grid-gap:        var(--space-14);
+  --page-pad-y:      var(--space-12);
+  --page-pad-x:      var(--space-14);
+  --page-pad-bottom: var(--space-20);
+
+  /* ── borders ─────────────────────────────────────────────── */
+  --rule-thin:   1px solid var(--color-rule);
+  --rule-strong: 2px solid var(--color-rule-strong);
+
+  /* ── motion ──────────────────────────────────────────────── */
+  --t-fast: 120ms;
+  --t-base: 180ms;
+  --ease:   cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+/* When the eventual frontend wants a dark mode, this is the override-point.
+ * (Not in scope for v1; documented for the implementer.) */
+/*
+@media (prefers-color-scheme: dark) {
+  :root {
+    --c-warm-white: #1c1e22;
+    --c-ink:        #e8e6df;
+    --c-ink-2:      #b3b5b9;
+    --c-muted:      #8a8d93;
+    --c-rule:       rgba(232,230,223,0.12);
+  }
+}
+*/

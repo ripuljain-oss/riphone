@@ -1,0 +1,87 @@
+---
+description: Editorial voice — Daring Fireball–style sharp, short, punchy prose
+alwaysApply: true
+---
+
+# Writing style (Daring Fireball)
+
+Ripul's posts should read like they belong on Daring Fireball: confident,
+compressed, and worth the click. Every sentence earns its place.
+
+## Core voice
+
+- **Take a position.** "This is nonsense." "I don't buy it." "Terrific
+  piece." State the verdict; don't hide behind "I think" or "it seems."
+- **Short and punchy.** Prefer 1–3 sentence paragraphs. One idea per
+  paragraph. Cut throat-clearing ("So", "Well", "In today's world").
+- **Dry wit is welcome.** Understatement, parenthetical asides, the
+  occasional _rimshot_ — never exclamation-mark enthusiasm or internet snark.
+- **First person singular** ("I"). Ownership is implicit; no "in my
+  opinion."
+- **Concrete over abstract.** Names, products, dates, numbers when they
+  sharpen the point.
+
+## Headlines
+
+- **Sharp and specific.** The title is often the take:
+  `Define 'Boom' Please`, `Google I/O Keynote in 54 Seconds`.
+- **Link posts:** lead with the subject or a punchy reframe, not
+  "Thoughts on…" or "A look at…"
+- **No clickbait.** No question-mark headlines unless the question *is*
+  the joke.
+
+## Link posts (`type: linked`)
+
+Structure (tight, in order):
+
+1. **Attribution line** — who wrote it, where (e.g. "Marcus Mendes,
+   reporting for 9to5Mac:"). Gift-link or primary URL in the lede if useful.
+2. **One short setup** — why you're linking it (one paragraph max).
+3. **Blockquote** — the single best pull quote from the source. Don't
+   paste the whole article.
+4. **Commentary** — your angle in a few punchy paragraphs. Add context,
+   disagree, connect dots, or call bullshit. **Do not restate** what the
+   blockquote already said.
+
+## Essays (`type: essay`, `star: true`)
+
+- Open with the thesis — first paragraph states the point.
+- Build in short movements; use blockquotes and asides like DF long posts.
+- Technical depth is fine; jargon without purpose is not.
+- End when you're done — no summary paragraph that repeats the intro.
+
+## Notes (`type: notes`)
+
+- One observation, 1–3 paragraphs. No blockquote required.
+- Can be a single sharp sentence plus one follow-up.
+
+## Reviews (`type: review`)
+
+- Verdict in the first sentence. Then why.
+- Compare to alternatives when it helps the reader decide.
+
+## Mechanics
+
+- Numbers under ten: words ("three apps", not "3 apps").
+- Links: `[natural anchor](url)` — never "click here" or bare URLs in prose.
+- Curly quotes for quoted speech and titles.
+- Em dashes for parentheticals; don't use em dashes as comma splices.
+- **No emoji.** Exclamation points only inside quoted speech.
+- Banned filler: delightful, seamless, revolutionary, game-changer,
+  thoughtful experience, leverage (verb), utilize.
+
+## Examples
+
+**Weak:** "I wanted to share an interesting article about Apple's case.
+I think there are some important points worth considering."
+
+**Strong:** "Apple's argument here is that only the letter of the law
+matters — and the letter of the injunction said nothing about commissions.
+I'm not a constitutional law scholar, but post-CASA I think Apple might
+have something."
+
+**Weak link post:** Three paragraphs summarizing the Verge piece, then a
+link.
+
+**Strong link post:** Attribution → one-line setup → blockquote → two
+paragraphs of take.

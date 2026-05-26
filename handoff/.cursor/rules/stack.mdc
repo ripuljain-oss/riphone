@@ -1,0 +1,84 @@
+---
+description: Recommended stack and project structure
+alwaysApply: true
+---
+
+# Stack
+
+**Recommended:** [Astro](https://astro.build) with the content collections
+API and zero client JS by default. This matches the "quiet tools" ethos —
+static HTML, hand-tunable, fast.
+
+Other acceptable: Eleventy (11ty), Hugo, Next.js (App Router, RSC).
+Hard-no on SPA frameworks for the public site: this is a reading site,
+not an application.
+
+## Project layout (Astro)
+
+```
+.
+├── src/
+│   ├── content/
+│   │   ├── config.ts                # zod schemas for post types
+│   │   └── posts/
+│   │       ├── 2026-05-22-quietness-of-tools.mdx
+│   │       └── …
+│   ├── styles/
+│   │   ├── tokens.css               # ← copy from handoff/tokens.css verbatim
+│   │   └── components.css           # ← copy from handoff/reference/styles.css
+│   ├── components/
+│   │   ├── Mast.astro
+│   │   ├── Sidebar.astro
+│   │   ├── Post.astro
+│   │   ├── ArchiveRow.astro
+│   │   ├── RateRow.astro
+│   │   ├── AvailabilityCal.astro
+│   │   ├── CTA.astro
+│   │   └── SiteFooter.astro
+│   ├── layouts/
+│   │   ├── Base.astro               # html shell, fonts, meta, tokens import
+│   │   └── PageWithSidebar.astro    # mast + grid + footer wrapper
+│   └── pages/
+│       ├── index.astro              # landing — pulls latest 10 posts
+│       ├── archive.astro            # archive — all posts, grouped by year
+│       ├── sponsor.astro            # sponsorship page (static markdown ok)
+│       ├── feed.xml.ts              # atom feed
+│       └── [year]/[month]/[slug].astro   # individual post
+├── public/
+│   ├── archive.txt                  # plain-text fallback index
+│   └── …
+├── astro.config.mjs
+├── tsconfig.json
+└── package.json
+```
+
+## Required Astro integrations
+
+```bash
+pnpm add -D @astrojs/mdx @astrojs/sitemap @astrojs/rss
+```
+
+- `@astrojs/mdx` — posts are MDX so you can embed the occasional component.
+- `@astrojs/sitemap` — auto-sitemap for the canonical URL.
+- `@astrojs/rss` (or Atom via `astro-rss-style`) — `/feed.xml` is mandatory.
+
+## Build target
+
+- Static output (`output: 'static'`).
+- Deploy to Netlify, Vercel, or Cloudflare Pages.
+- Ensure trailing-slash policy is consistent (recommended: `trailingSlash:
+  'never'`).
+- Set canonical URL in `astro.config.mjs` so feeds and sitemap come out
+  with absolute hrefs.
+
+## What NOT to add
+
+- No client-side router. No Astro `<Image>` until there's an actual image
+  asset to optimize.
+- No analytics scripts. (If you must measure traffic, use a server-side
+  log analyser like GoatCounter or Plausible's no-cookie embed — and put
+  it in the site footer with a privacy note.)
+- No comment system. The site is one-way.
+- No Tailwind unless you also wire `tokens.json` into `theme.extend` so
+  utilities resolve to tokens. Otherwise it competes with the token layer
+  and devolves into hex codes in JSX.

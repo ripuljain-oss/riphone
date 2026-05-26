@@ -1,0 +1,60 @@
+---
+description: How to draft posts when Ripul brings research and links in chat
+alwaysApply: true
+---
+
+# Drafting workflow
+
+Ripul researches on his own, pastes links and notes into the agent, and
+asks for **drafts** — not finished publish-ready copy without review.
+
+## When Ripul says "draft a post" (or similar)
+
+1. **Read what he provided** — URLs, excerpts, bullet notes, his angle.
+   Do not invent sources, quotes, or facts not in the thread.
+2. **Pick the post type** — `linked` | `essay` | `notes` | `review` (see
+   `content.mdc`). Default to `linked` when the prompt is mostly a URL.
+3. **Ask only if blocked** — missing attribution, unclear stance, or
+   whether it's a link post vs essay. One focused question beats five.
+4. **Output a draft** as MDX frontmatter + body, ready for
+   `src/content/posts/` once the Astro site exists. Until then, output
+   full markdown in the chat.
+5. **Match `writing-style.mdc`** — sharp, short, DF-style. Ripul edits
+   voice; you supply structure and a strong first pass.
+
+## Frontmatter template
+
+```yaml
+---
+title: "Sharp Title Here"
+date: 2026-05-25T20:00:00Z
+# include time so newest posts sort to top deterministically
+type: linked          # essay | linked | notes | review
+tags: [apple, legal]
+star: false           # true only for type: essay (originals)
+linkUrl: "https://…"  # required when type: linked
+linkAuthor: "Name"    # optional
+---
+```
+
+## Link-post draft checklist
+
+- [ ] Title is a take, not a summary
+- [ ] Attribution in the first lines
+- [ ] Exactly one blockquote (the best line from the source)
+- [ ] Commentary adds opinion — does not repeat the quote
+- [ ] No invented quotes; paraphrase only what's in Ripul's notes if
+      he didn't paste the exact line
+
+## Essay draft checklist
+
+- [ ] `star: true` and `★` will appear on the published title
+- [ ] Thesis in paragraph one
+- [ ] Paragraphs mostly 1–3 sentences
+- [ ] No "Welcome to…" or throat-clearing
+
+## After the draft
+
+- Offer a **tighter** alternate title if one is obviously stronger.
+- Do not push publish, SEO, or social copy unless asked.
+- If Ripul gives a contrary angle mid-thread, rewrite — don't argue.

@@ -1,0 +1,82 @@
+---
+import PageWithSidebar from '../layouts/PageWithSidebar.astro';
+import ArchiveRow from '../components/ArchiveRow.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { SITE } from '../site';
+import {
+  getAllPosts,
+  getPostsFiltered,
+  postsByYear,
+  type PostEntry,
+} from '../lib/posts';
+
+const typeParam = Astro.url.searchParams.get('type');
+const filter = (typeParam ?? 'all') as PostEntry['data']['type'] | 'all';
+const validTypes = ['essay', 'linked', 'notes', 'review'] as const;
+const activeFilter = validTypes.includes(filter as (typeof validTypes)[number])
+  ? (filter as PostEntry['data']['type'])
+  : undefined;
+
+const allPosts = await getAllPosts();
+const posts = activeFilter
+  ? await getPostsFiltered(activeFilter)
+  : allPosts;
+const byYear = postsByYear(posts);
+const allByYear = postsByYear(allPosts);
+
+function countForYear(year: number): number {
+  return allByYear.get(year)?.length ?? 0;
+}
+
+const filters = [
+  { key: 'all', label: 'all', count: allPosts.length },
+  { key: 'essay', label: 'essays', count: allPosts.filter((p) => p.data.type === 'essay').length },
+  { key: 'linked', label: 'linked', count: allPosts.filter((p) => p.data.type === 'linked').length },
+  { key: 'notes', label: 'notes', count: allPosts.filter((p) => p.data.type === 'notes').length },
+  { key: 'review', label: 'reviews', count: allPosts.filter((p) => p.data.type === 'review').length },
+];
+---
+
+<PageWithSidebar title="Archive" description={`Every ${SITE.name} post.`} current="/archive">
+  <aside slot="sidebar" class="sidebar" aria-label="Archive index">
+    <p class="sidebar__h">Jump to</p>
+    <ul>
+      {[...allByYear.keys()].map((year) => (
+        <li><a href={`#y${year}`}>{year} ({countForYear(year)})</a></li>
+      ))}
+    </ul>
+    <p class="sidebar__h">Filter</p>
+    <ul>
+      {filters.map(({ key, label, count }) => (
+        <li>
+          <a
+            href={key === 'all' ? '/archive' : `/archive?type=${key}`}
+            aria-current={filter === key ? 'page' : undefined}
+          >
+            {label} ({count})
+          </a>
+        </li>
+      ))}
+    </ul>
+  </aside>
+
+  <header>
+    <p class="page-title__eyebrow">/archive</p>
+    <h1 class="page-title__h1">The Archive</h1>
+    <p class="page-title__desc">
+      {posts.length} entries · grep-able · plain text fallback in{' '}
+      <a class="link" href="/archive.txt">/archive.txt</a>
+    </p>
+  </header>
+
+  {[...byYear.entries()].map(([year, yearPosts]) => (
+    <section id={`y${year}`} aria-labelledby={`y${year}-h`}>
+      <h2 id={`y${year}-h`} class="archive-year">{year}</h2>
+      <ul class="archive-list">
+        {yearPosts.map((entry) => <ArchiveRow entry={entry} />)}
+      </ul>
+    </section>
+  ))}
+
+  <SiteFooter route="/archive" />
+</PageWithSidebar>

@@ -1,0 +1,68 @@
+---
+description: Typography rules — when to use mono vs serif, how text should set
+globs:
+  - "**/*.css"
+  - "**/*.scss"
+  - "**/*.tsx"
+  - "**/*.jsx"
+  - "**/*.astro"
+  - "**/*.html"
+  - "**/*.svelte"
+  - "**/*.vue"
+---
+
+# Typography
+
+## Family rules (hard)
+
+- **Newsreader (serif)** — long-form body copy only. Paragraphs inside
+  `<article>`, blockquotes, page descriptions.
+- **JetBrains Mono** — **all UI chrome**: wordmark, nav, post titles,
+  datelines, sidebar, archive list rows, rate prices, the CTA, footer,
+  section headings (`.section-h`).
+
+Yes, post **titles** are mono. That's the whole personality of this design;
+do not change them to serif "to be more readable." They render at
+`var(--fs-title)` (18px) `semi-bold` and read fine.
+
+## Settings
+
+```css
+body {
+  font-family: var(--font-serif);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  font-feature-settings: 'kern' 1, 'liga' 1;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+```
+
+Mono elements should set `letter-spacing: -0.01em` on titles & wordmark,
+`0` elsewhere. Uppercase mono labels (datelines, eyebrows) use no extra
+letter-spacing — JetBrains Mono is already comfortably tracked.
+
+## Hierarchy
+
+```
+h1 (page title)   var(--fs-h1)     mono semi-bold       22/1.35
+h2 (post title)   var(--fs-title)  mono semi-bold       18/1.3
+h2 (section)      14px             mono semi-bold caps  + 0.04em tracking
+year heading      13px             mono semi-bold       (accent color)
+dateline          11px             mono uppercase       (meta color)
+body              17px             serif                17/1.6
+sidebar           12px             mono                 line-height inherit
+```
+
+No `<h3>` and below in the current spec. If new content needs deeper
+hierarchy, add a new token first.
+
+## Don'ts
+
+- No web font swap flash — preconnect to `fonts.gstatic.com` and use
+  `display=swap`. The page should fall back to Georgia / monospace
+  cleanly.
+- No `text-transform: uppercase` on body copy. Mono labels only.
+- No font sizes outside the token scale.
+- No italic everywhere — italic is reserved for `<em>` inside body
+  (per-word emphasis) and for quoted titles (e.g. "*The Notes* podcast").

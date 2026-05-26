@@ -1,0 +1,24 @@
+---
+import { SITE } from '../site';
+
+interface Props {
+  current?: '/' | '/archive' | '/feed.xml';
+}
+
+const { current = '/' } = Astro.props;
+
+const links = [
+  { href: '/', path: '/' as const, label: '/latest' },
+  { href: '/archive', path: '/archive' as const, label: '/archive' },
+  { href: '/feed.xml', path: '/feed.xml' as const, label: '/feed.xml' },
+];
+---
+
+<header class="mast">
+  <a href="/" class="mast__wordmark" aria-label={`${SITE.name} — home`}>{SITE.name}</a>
+  <nav class="mast__nav" aria-label="Primary">
+    {links.map(({ href, path, label }) => (
+      <a href={href} aria-current={current === path ? 'page' : undefined}>{label}</a>
+    ))}
+  </nav>
+</header>

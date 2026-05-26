@@ -1,0 +1,35 @@
+# riphone — Cursor rules (root)
+
+This repo is Ripul Jain's blog at https://riphone.org — quiet Mono Ink +
+Terracotta design, Daring Fireball–style writing (sharp, short, punchy takes).
+
+## Your job here
+
+1. **Build** the site per `handoff/reference/*.html` and `.cursor/rules/`.
+2. **Draft posts** when Ripul pastes links and notes — follow
+   `.cursor/rules/writing-style.mdc` and `drafting.mdc`. Do not invent
+   quotes or facts.
+
+## Writing (non-negotiable)
+
+- Opinionated, declarative, no "I think"
+- Short paragraphs; link posts = attribution + one blockquote + your take
+- Link-post headlines point to the original source URL
+- Original essays: thesis up front; `star: true` / ★ on publish
+- Newest posts first everywhere; use ISO datetime in frontmatter
+- No emoji, marketing fluff, or welcome intros
+
+## Design (non-negotiable)
+
+- Tokens only: `handoff/tokens.css` — no inline hex
+- Newsreader body, JetBrains Mono chrome
+- Terracotta accent used sparingly (see `handoff/DESIGN-SYSTEM.md`)
+
+## Full rules
+
+Always-on: `project`, `writing-style`, `drafting`, `tokens`, `components`,
+`accessibility`, `stack`.
+
+File-scoped: `content` (*.md/mdx), `typography` (*.css, *.astro, …).
+
+Read `handoff/README.md` before scaffolding Astro.

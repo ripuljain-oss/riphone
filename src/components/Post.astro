@@ -1,0 +1,33 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import {
+  formatDateline,
+  isoDate,
+  postTitleHref,
+} from '../lib/posts';
+
+interface Props {
+  entry: CollectionEntry<'posts'>;
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+const d = entry.data.date;
+const titleHref = postTitleHref(entry);
+const showStar = entry.data.star;
+---
+
+<article class="post">
+  <p class="post__dateline">
+    <time datetime={isoDate(d)}>{formatDateline(d)}</time>
+  </p>
+  <h2 class="post__title">
+    <a href={titleHref}>{entry.data.title}</a>
+    {showStar && (
+      <span class="post__star" aria-label="Original post">★</span>
+    )}
+  </h2>
+  <div class="post__body">
+    <Content />
+  </div>
+</article>

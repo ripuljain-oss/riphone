@@ -1,0 +1,38 @@
+---
+description: Recommended stack and project structure
+alwaysApply: true
+---
+
+# Stack
+
+**Recommended:** [Astro](https://astro.build) — static HTML, content
+collections, minimal client JS.
+
+## Layout
+
+```
+src/
+  content/posts/          # MDX + frontmatter (see content.mdc)
+  styles/
+    tokens.css            # from handoff/tokens.css
+    components.css        # from handoff/reference/styles.css
+  components/             # Mast, Post, ArchiveRow, …
+  layouts/                # Base.astro, PageWithSidebar.astro
+  pages/                  # index, archive, feed.xml.ts
+handoff/                  # design spec + reference HTML (canonical UI)
+```
+
+## Integrations
+
+`@astrojs/mdx`, `@astrojs/sitemap`, RSS/Atom for `/feed.xml`
+
+## Build
+
+- `output: 'static'`
+- `trailingSlash: 'never'`
+- Canonical URL in `astro.config.mjs`
+
+## Don't add (v1)
+
+- Client router, analytics, comments, search UI library, Tailwind without
+  token mapping

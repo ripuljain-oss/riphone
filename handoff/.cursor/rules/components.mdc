@@ -1,0 +1,94 @@
+---
+description: Component patterns — how to build the recurring blocks
+alwaysApply: true
+---
+
+# Components
+
+The site is small. There are ~8 components total. Build them as
+**framework-agnostic** primitives that consume tokens. Names match the
+class names in `/handoff/reference/styles.css`.
+
+## 1. `<Mast>` — masthead (every page)
+
+- Two-column grid: wordmark left, `/nav` right.
+- Wordmark renders the brand: `▮ ripblog`. The `▮` is a `::before` glyph in
+  `var(--color-accent)`; do not use an SVG.
+- `<nav>` has 5 links: `/latest`, `/archive`, `/notes`, `/feed.xml`,
+  `/sponsor`. Style with `aria-current="page"` on the active link — that
+  triggers the accent color + accent underline.
+- 2px ink underline below; 40px margin-bottom.
+
+## 2. `<PageGrid>` — sidebar + content shell
+
+- CSS grid: `200px 1fr` with a 56px gap.
+- Below `720px`, collapse to single column; sidebar moves to `order: 2`
+  (after content).
+- Used by every page that has a sidebar (all three so far).
+
+## 3. `<Sidebar>` — site index column
+
+- Mono, 12px, meta color.
+- Sections each have a heading (`.sidebar__h`, ink color, semi-bold) and a
+  vertical list with 8px gaps.
+- Common headings: "Recent", "Tags", "Jump to", "Filter", "At a glance",
+  "Past sponsors". Use whichever the page calls for.
+
+## 4. `<Post>` — feed entry on Landing
+
+```
+<article class="post">
+  <p class="post__dateline"><time datetime="…">MAY 22 2026</time></p>
+  <h2 class="post__title">
+    <a href="…">Title here</a>
+    {/* if original essay: */}
+    <span class="post__star" aria-label="Original post">★</span>
+  </h2>
+  <div class="post__body">…</div>
+</article>
+```
+
+- Original essays get the `★`. Link posts don't.
+- Post separator: `margin-top: 44px; padding-top: 40px; border-top: 1px
+  solid var(--color-rule);` — applied via `.post + .post`.
+- Body uses Newsreader serif; blockquotes get a 2px accent left rule and
+  `var(--color-fg-muted)` text.
+
+## 5. `<ArchiveRow>` — single archive entry
+
+3-column grid `[56px date] [1fr title] [auto tag]` with a 16px gap.
+Hairline `border-top` between rows. All mono. The tag is uppercase 10.5px
+in meta color with `0.08em` letter-spacing.
+
+## 6. `<RateRow>` — sponsorship rate
+
+2-column `[1fr label] [auto price]`. Price is mono, 15px, semi-bold,
+accent-colored. Hairline `border-top` between rows.
+
+## 7. `<AvailabilityCal>` — sponsorship calendar
+
+`grid-template-columns: repeat(4, 1fr)` with 6px gap. Three cell states:
+- `--available` — default, 1px ink border.
+- `--next` — solid accent background, accent-fg text. Use sparingly (1–2
+  cells max).
+- `--sold` — 0.4 opacity, line-through.
+
+Each cell shows a week label (e.g. "Jun 16") and a one-word status under
+it.
+
+## 8. `<CTA>` — primary call-to-action
+
+Inline-block, 16px/24px padding, mono 13px, ink background, warm-white
+text. On hover, swap to accent background and accent-fg text. Used once
+per page max — currently only on the Sponsorship page.
+
+---
+
+## Reusability checklist
+
+When you write a new page, you should be assembling these primitives — not
+inventing new ones. If you find yourself reaching for a new component:
+
+1. Can it be done with existing primitives + a token tweak? Do that.
+2. If not, add the component here in this file first, with its props and
+   class names, **before** building it.

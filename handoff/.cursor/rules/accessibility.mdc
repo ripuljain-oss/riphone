@@ -1,0 +1,68 @@
+---
+description: Accessibility — non-negotiable. Always applied.
+alwaysApply: true
+---
+
+# Accessibility
+
+## Landmarks & semantics
+
+- One `<main>` per page, wrapped around the entire `.page` shell.
+- One `<header class="mast">` containing the brand link + `<nav>`. The
+  nav gets `aria-label="Primary"`. The active item gets `aria-current="page"`.
+- Sidebars are `<aside>` with `aria-label` describing the column ("Site
+  index", "Archive index", "Sponsor info").
+- Posts use `<article>`. Lists of posts use repeated `<article>` inside a
+  `<section aria-label="Latest posts">` (or similar).
+- Years on the archive are `<section id="y2026" aria-labelledby="y2026-h">`
+  with an `<h2 id="y2026-h">`.
+- Dates use `<time datetime="YYYY-MM-DD">`.
+- Footer is `<footer class="site-footer">` inside `<main>` (or as the
+  page's last child — both are valid; pick one and be consistent).
+
+## Focus & keyboard
+
+- All interactive elements must show a visible focus ring. The default
+  browser ring is acceptable; if you customise it, use
+  `outline: 2px solid var(--color-accent); outline-offset: 2px;`.
+- Tab order follows DOM order. Do not introduce `tabindex` other than `-1`
+  to remove non-interactive elements from order.
+- Skip-to-content link belongs in the very first position inside `<body>`,
+  visually hidden until focused. Target: `#main`.
+
+## Color & contrast
+
+The chosen palette has been spot-checked for WCAG AA:
+
+- Body text `#14151a` on `#fafafa` — 17.0:1 ✓
+- Meta text `#6b6f78` on `#fafafa` — 5.0:1 ✓ (large/small)
+- Muted `#4a4f57` on `#fafafa` — 8.7:1 ✓
+- Accent `#d97757` on `#fafafa` — 3.3:1 — passes for **large text and
+  non-text UI only**. Do **not** set body copy in accent.
+- Accent fg `#ffffff` on `#d97757` — 3.1:1 — minimum for large
+  (CTA-hover/sold-week chip is 13px **mono**, which qualifies as large
+  per WCAG when bold; the underlying CTA is solid ink, so this only kicks
+  in on hover).
+
+If you introduce a new surface that puts small text on accent, switch the
+text to `var(--color-bg)` or `#fff` and re-verify contrast.
+
+## Motion
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+```
+
+Already in `tokens.css`. Don't override it.
+
+## Screen reader fixes
+
+- The `★` glyph next to original posts needs `aria-label="Original post"`
+  (or wrap in `<span class="sr-only">Original post</span>`). It is
+  decorative-with-meaning, so it must be announced.
+- The `▮` glyph in the wordmark is purely decorative (`::before`) — no
+  label needed; screen readers ignore CSS-generated content.
+- The masthead link wrapping the wordmark should set
+  `aria-label="ripblog — home"`.

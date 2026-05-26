@@ -1,0 +1,68 @@
+---
+description: Content schema, post types, and UI copy
+globs:
+  - "**/*.md"
+  - "**/*.mdx"
+  - "src/content/**/*"
+---
+
+# Content
+
+## Post formats
+
+Posts live in `src/content/posts/` with frontmatter:
+
+```yaml
+---
+title: "Define 'Boom' Please"
+date: 2026-05-25T20:00:00Z
+# use ISO datetime so newer posts reliably sort to the top
+# format: YYYY-MM-DDTHH:MM:SSZ
+type: essay        # essay | linked | notes | review
+tags: [apple, ai]
+star: true         # originals only; linked posts: false
+linkUrl: "https://…"
+linkAuthor: "Tripp Mickle"
+---
+```
+
+### Type rules
+
+- **essay** — original. `star: true`. DF-style long or medium form; short
+  paragraphs, clear thesis. See `writing-style.mdc`.
+- **linked** — external piece + your take. Requires `linkUrl`. **Title
+  links to `linkUrl`** (not the on-site permalink). Body: attribution →
+  brief setup → **one** blockquote → commentary. Never summarize the whole
+  source.
+- **notes** — 1–3 paragraphs, one idea. No required blockquote.
+- **review** — verdict first, evidence second. Use sparingly.
+
+## Ordering
+
+- Newest posts must appear first on `/`, `/archive`, and `/feed.xml`.
+- When two posts are on the same day, set different `date` times so order is explicit.
+
+## Voice (editorial)
+
+Follow `writing-style.mdc` (Daring Fireball–style). In short:
+
+- Punchy, opinionated, no hedging
+- Link posts add value; they don't echo the source
+- No marketing language, emoji, or welcome intros
+
+## UI copy
+
+- Nav: `/latest`, `/archive`, `/feed.xml` (no `/notes` or `/sponsor` in v1)
+- Page eyebrows match URL path
+- Section headings: uppercase mono, 2–3 words
+- CTAs: sentence case + arrow (`Reserve a week →`)
+- Footer left: `© <year>` + linked X handle (`@bmbyslm` → `https://x.com/bmbyslm`)
+- Footer right: `riphone · <route>` (or version on home)
+- Site URL: `https://riphone.org`
+
+## Don'ts
+
+- No emoji in posts or UI
+- No exclamation points in your voice (quoted speech OK)
+- No "I think / I believe / in my opinion"
+- No bare URLs or "click here" anchors

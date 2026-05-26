@@ -1,0 +1,28 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import {
+  formatArchiveDate,
+  isoDate,
+  postTitleHref,
+  typeLabel,
+} from '../lib/posts';
+
+interface Props {
+  entry: CollectionEntry<'posts'>;
+}
+
+const { entry } = Astro.props;
+const d = entry.data.date;
+const showStar = entry.data.star;
+---
+
+<li>
+  <span class="archive-list__date">
+    <time datetime={isoDate(d)}>{formatArchiveDate(d)}</time>
+  </span>
+  <a class="archive-list__title" href={postTitleHref(entry)}>
+    {entry.data.title}
+    {showStar && <span class="post__star">★</span>}
+  </a>
+  <span class="archive-list__tag">{typeLabel(entry.data.type)}</span>
+</li>

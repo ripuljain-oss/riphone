@@ -1,0 +1,53 @@
+---
+description: ripblog — overarching brand, voice, and aesthetic. Always applied.
+alwaysApply: true
+---
+
+# ripblog — project ground rules
+
+You are working on **ripblog**, a personal long-form blog by R. Park. The
+guiding principle is **quietness**: the design is text-first, the chrome is
+minimal, and there is no surface that doesn't earn its place.
+
+## Aesthetic direction (locked)
+
+- **Variant:** Mono Ink with Terracotta accent
+- **Background:** warm off-white `#fafafa`
+- **Foreground:** ink `#14151a`
+- **Accent:** terracotta `#d97757` — used sparingly (links, stars, wordmark
+  dot, blockquote rule, CTA hover, calendar "next" chip)
+- **Type:** Newsreader (serif) for body & long-form, JetBrains Mono for **all
+  UI chrome** (wordmark, nav, post titles, datelines, sidebar, archive list,
+  rate prices, CTA)
+- **Layout:** two-column grid (200px sidebar + 580px content max), centered
+  inside a 920px max page, generous whitespace
+- **Borders:** 2px ink underline on the masthead; 1px `rgba(20,21,26,0.12)`
+  hairlines elsewhere
+- **No gradients, no rounded corners on cards, no drop shadows, no emoji**
+
+## Voice (for content + UI copy)
+
+- Short sentences. Declarative. No hedging.
+- First-person singular ("I"). Conversational but considered.
+- No "Welcome to my blog!", no exclamation points outside quoted speech.
+- Link posts get a brief lede + a single block-quoted excerpt + one line of
+  commentary. Original essays get a `★` next to the title.
+- Page meta copy is short and concrete. Avoid marketing-speak.
+
+## Hard nos
+
+- Do not introduce additional accent colors. Terracotta is the only accent.
+- Do not import a UI library (shadcn, Material, Chakra, etc).
+- Do not use Tailwind utility classes for one-off styling — define a
+  semantic class and consume tokens. (If Tailwind is the chosen stack, do
+  the same via `@apply` or extend `theme` with tokens — never inline hex.)
+- Do not add a hamburger menu — the nav has 5 items and stacks vertically on
+  small screens.
+- Do not use icons in nav or post titles. The `▮` and `★` glyphs are the
+  only visual marks.
+
+## When in doubt
+
+Refer to the **reference HTML** in `/handoff/reference/` — those three files
+are the canonical implementation of every page. Match their structure
+exactly. Match their class names. Match their copy length.

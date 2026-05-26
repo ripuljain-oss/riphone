@@ -1,0 +1,44 @@
+---
+description: ripblog — brand, aesthetic, and editorial north star. Always applied.
+alwaysApply: true
+---
+
+# ripblog — project ground rules
+
+You are working on **riphone** (https://riphone.org), Ripul Jain's personal blog. The site is
+text-first, visually quiet, and editorially sharp — writing in the spirit
+of [Daring Fireball](https://daringfireball.net/): punchy takes, tight
+prose, and link posts that add value instead of summarizing the web.
+
+## Aesthetic direction (locked)
+
+- **Variant:** Mono Ink with Terracotta accent
+- **Background:** warm off-white `#fafafa`
+- **Foreground:** ink `#14151a`
+- **Accent:** terracotta `#d97757` — links, ★ on originals, wordmark dot,
+  blockquote rule, CTA hover, calendar "next" chip
+- **Type:** Newsreader (serif) for body; JetBrains Mono for all UI chrome
+- **Layout:** 200px sidebar + 580px content, 920px page max
+- **No gradients, rounded card corners, drop shadows, or emoji**
+
+## Editorial direction (locked)
+
+- **Voice:** Daring Fireball–style — declarative, opinionated, dry wit OK.
+  See `writing-style.mdc` and `drafting.mdc`.
+- **Workflow:** Ripul researches and drops links/notes in chat; you draft
+  posts from that material. Do not invent facts or quotes.
+- **Original essays** get `★` in the title (ripblog convention — not DF's
+  link-post star, but the same glyph).
+
+## Hard nos
+
+- No extra accent colors. Terracotta only.
+- No UI component libraries (shadcn, Material, Chakra, etc.).
+- No one-off Tailwind hex — use tokens from `handoff/tokens.css`.
+- No hamburger nav. Five links, stack on small screens.
+- No nav icons. `▮` and `★` only.
+
+## When in doubt
+
+Match `handoff/reference/*.html` for layout and classes. Match
+`writing-style.mdc` for tone. Match `handoff/PAGES.md` for routing and data.

@@ -1,0 +1,65 @@
+---
+description: Content authoring rules — for posts, sponsorship copy, and any UI strings
+globs:
+  - "**/*.md"
+  - "**/*.mdx"
+  - "src/content/**/*"
+---
+
+# Content
+
+## Post formats
+
+There are exactly three post types. Each goes in `src/content/posts/`
+(or your equivalent collection) with frontmatter:
+
+```yaml
+---
+title: "On the quietness of tools"
+date: 2026-05-22
+type: essay        # essay | linked | notes | review
+tags: [tools, typography]
+star: true         # essays may be "starred originals"; linked posts never are
+linkUrl: "…"       # required when type: linked, omitted otherwise
+linkAuthor: "…"    # optional, attributes the linked piece
+---
+```
+
+### Type rules
+
+- **essay** — original long-form. Eligible for `star: true`.
+- **linked** — points outward. Must include `linkUrl`. Body: one-paragraph
+  lede + a single `<blockquote>` excerpt from the source + one or two
+  sentences of commentary. Do **not** restate the linked piece.
+- **notes** — short observations. One to three paragraphs. No quotes.
+- **review** — review of a product, book, film. Verdict-first, body
+  underneath. Use sparingly.
+
+## Voice
+
+- First person singular. Past tense for narrative, present for reflection.
+- No "I think", "in my opinion", "I believe" — the post is on your blog;
+  ownership is implicit.
+- Avoid em-dashes-as-comma; use real em-dashes for parentheticals only.
+- Numbers under ten written as words. "Three notes", not "3 notes".
+- Inline links use Markdown: `[anchor text](url)`. Anchor text is a
+  natural noun phrase, never "click here" or the bare URL.
+- Quoted speech uses curly quotes. So do apostrophes.
+
+## UI copy
+
+- Nav items lowercase prefixed with `/`: `/latest`, `/archive`, etc.
+- Page eyebrows match the URL path (`/sponsor`, `/archive`).
+- Section headings are uppercase mono, two or three words.
+- Button copy is sentence-case, ends with an arrow: `Reserve a week →`.
+- Footer always reads `© <year> R. Park` on the left, `ripblog · <route>`
+  on the right.
+
+## Don'ts
+
+- No emoji anywhere — not in posts, not in UI, not in commit messages
+  rendered in the UI.
+- No exclamation points in your own voice. Quoted speech is fine.
+- No marketing words: "delightful", "seamless", "revolutionary", "AI",
+  "thoughtful experience". They cheapen the page.
+- No "Welcome to…" intros, ever.

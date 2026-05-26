@@ -1,0 +1,43 @@
+---
+import '../styles/tokens.css';
+import '../styles/components.css';
+import { SITE } from '../site';
+
+interface Props {
+  title: string;
+  description?: string;
+  feed?: boolean;
+}
+
+const { title, description = SITE.description, feed = true } = Astro.props;
+const pageTitle = title === SITE.name ? `${SITE.name} — by ${SITE.author}` : `${title} · ${SITE.name}`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={new URL(Astro.url.pathname, SITE.url).href} />
+    {feed && (
+      <link
+        rel="alternate"
+        type="application/atom+xml"
+        title={SITE.name}
+        href="/feed.xml"
+      />
+    )}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <slot />
+  </body>
+</html>
