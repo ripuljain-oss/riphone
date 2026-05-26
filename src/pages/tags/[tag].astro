@@ -1,0 +1,68 @@
+---
+import PageWithSidebar from '../../layouts/PageWithSidebar.astro';
+import Post from '../../components/Post.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import { SITE } from '../../site';
+import { collectionPageJsonLd } from '../../lib/seo';
+import {
+  getAllPosts,
+  getAllTags,
+  getPostsByTag,
+  tagCounts,
+} from '../../lib/posts';
+
+export async function getStaticPaths() {
+  const tags = await getAllTags();
+  return tags.map((tag) => ({
+    params: { tag },
+    props: { tag },
+  }));
+}
+
+const { tag } = Astro.props;
+const allPosts = await getAllPosts();
+const posts = getPostsByTag(allPosts, tag);
+const tags = tagCounts(allPosts);
+const description = `${posts.length} post${posts.length === 1 ? '' : 's'} tagged “${tag}” on ${SITE.name}.`;
+---
+
+<PageWithSidebar
+  title={tag}
+  description={description}
+  jsonLd={collectionPageJsonLd(tag, `/tags/${tag}`, description)}
+>
+  <aside slot="sidebar" class="sidebar" aria-label="Tags">
+    <p class="sidebar__h">Tags</p>
+    <ul>
+      {tags.map(({ tag: t, count }) => (
+        <li>
+          <a href={`/tags/${t}`} aria-current={t === tag ? 'page' : undefined}>
+            {t} ({count})
+          </a>
+        </li>
+      ))}
+    </ul>
+    <p class="sidebar__h">Elsewhere</p>
+    <ul>
+      <li><a href="/">/latest</a></li>
+      <li><a href="/archive">/archive</a></li>
+    </ul>
+  </aside>
+
+  <header>
+    <p class="page-title__eyebrow">/tags/{tag}</p>
+    <h1 class="page-title__h1">{tag}</h1>
+    <p class="page-title__desc">
+      {posts.length} {posts.length === 1 ? 'post' : 'posts'}
+    </p>
+  </header>
+
+  <section aria-label={`Posts tagged ${tag}`}>
+    {posts.length === 0 ? (
+      <p>No posts with this tag.</p>
+    ) : (
+      posts.map((entry) => <Post entry={entry} />)
+    )}
+    <SiteFooter route={`/tags/${tag}`} />
+  </section>
+</PageWithSidebar>

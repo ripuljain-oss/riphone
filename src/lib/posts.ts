@@ -86,6 +86,19 @@ export async function getPostsFiltered(
   return posts.filter((p) => p.data.type === type);
 }
 
+export async function getAllTags(): Promise<string[]> {
+  const posts = await getAllPosts();
+  const tags = new Set<string>();
+  for (const p of posts) {
+    for (const t of p.data.tags) tags.add(t);
+  }
+  return [...tags].sort();
+}
+
+export function getPostsByTag(posts: PostEntry[], tag: string): PostEntry[] {
+  return posts.filter((p) => p.data.tags.includes(tag));
+}
+
 export function tagCounts(posts: PostEntry[]): { tag: string; count: number }[] {
   const map = new Map<string, number>();
   for (const p of posts) {
