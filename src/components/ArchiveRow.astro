@@ -3,7 +3,7 @@ import type { CollectionEntry } from 'astro:content';
 import {
   formatArchiveDate,
   isoDate,
-  postTitleHref,
+  postPath,
   typeLabel,
 } from '../lib/posts';
 
@@ -20,7 +20,7 @@ const showStar = entry.data.star;
   <span class="archive-list__date">
     <time datetime={isoDate(d)}>{formatArchiveDate(d)}</time>
   </span>
-  <a class="archive-list__title" href={postTitleHref(entry)}>
+  <a class="archive-list__title" href={postPath(entry)}>
     {entry.data.title}
     {showStar && <span class="post__star">★</span>}
   </a>
