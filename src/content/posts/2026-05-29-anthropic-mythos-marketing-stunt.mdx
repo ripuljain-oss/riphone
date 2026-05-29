@@ -1,0 +1,37 @@
+---
+title: "Anthropic's Mythos Was the Greatest Marketing Stunt of the AI Era"
+date: 2026-05-29T15:00:00Z
+description: "Anthropic said Mythos was too dangerous to release. Daniel Stenberg ran it on curl and found one low-severity bug. The hype doesn't match the data."
+type: linked
+tags: [ai, tech, security]
+linkUrl: "https://daniel.haxx.se/blog/2026/05/11/mythos-finds-a-curl-vulnerability/"
+linkAuthor: "Daniel Stenberg"
+---
+
+Daniel Stenberg, creator of curl, [finally got his hands on Anthropic's Mythos](https://daniel.haxx.se/blog/2026/05/11/mythos-finds-a-curl-vulnerability/) — the AI model Anthropic deemed too dangerous to release publicly. The results are embarrassing. For Anthropic.
+
+> My personal conclusion can however not end up with anything else than that the big hype around this model so far was primarily marketing. I see no evidence that this setup finds issues to any particular higher or more advanced degree than the other tools have done before Mythos.
+
+Here's the setup, in case you missed the April media blitz. Anthropic announced Claude Mythos Preview — a model "dangerously good" at finding security flaws. Zero-days in every major OS. Four-vulnerability exploit chains. Bugs that had sat in OpenBSD for 27 years. The company said it was so dangerous they couldn't release it to the public. Instead they'd trickle access to "selected partners" through something called Project Glasswing.
+
+The world panicked. "Is this the end of software security as we know it?" The press ate it up. The framing was perfect: "Our AI is so powerful we're scared of it ourselves."
+
+Stenberg's data point punctures all of it.
+
+Curl is 178,000 lines of C. It runs on 20 billion devices. It's been scanned by AISLE, Zeropath, and OpenAI's Codex Security — tools that have collectively found 200 to 300 bugs in the last year alone. It's arguably the most heavily audited C codebase on the planet.
+
+Mythos scanned it and found five "confirmed" vulnerabilities.
+
+After the curl security team reviewed them: **one was real.** Severity: low. The other four were false positives or documented API behavior.
+
+One. Low. On the most scrutinized codebase available.
+
+Anthropic's own risk report — the one that set off the panic — says over 99% of the vulnerabilities they found haven't been patched yet and can't be disclosed. Convenient. The 1% they can talk about are framed as watershed moments. But the single independently verifiable test on a well-known target produced a single low-severity CVE.
+
+This doesn't mean Mythos is useless. Stenberg is careful to say the bug reports it did produce were well-explained and the false positive rate was low. AI code analyzers are genuinely better than traditional static analysis. Any project that hasn't been scanned with AI tooling will probably find a lot.
+
+But "dangerously good"? Too dangerous to release? The data doesn't support that story. The story supported the story.
+
+Calling this a marketing stunt isn't cynical. It's just accurate. Anthropic invented a crisis — "our model is too powerful to share" — and everyone played along. The real test on real code says Mythos is maybe incrementally better than tools already available. That's worth talking about. It's not worth a global panic.
+
+The security community should keep scanning code with AI. It finds bugs. It makes software safer. What it doesn't need is a lab coat and a scary soundtrack.
