@@ -1,4 +1,4 @@
-/* ripblog — reference component styles.
+/* riphone — reference component styles.
  * Consumes tokens from ../tokens.css. Class names are framework-agnostic.
  * Translate to your component library of choice; keep the tokens canonical.
  */
@@ -6,6 +6,10 @@
 /* ── reset ─────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
 body {
   background: var(--color-bg);
   color: var(--color-fg);
@@ -29,13 +33,15 @@ img { max-width: 100%; height: auto; display: block; }
 /* ── masthead ──────────────────────────────────────────────── */
 .mast {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: var(--space-6);
   align-items: end;
   padding-bottom: var(--space-5);
   border-bottom: var(--rule-strong);
   margin-bottom: var(--space-10);
 }
 .mast__wordmark {
+  min-width: 0;
   font-family: var(--font-mono);
   font-size: var(--fs-wordmark);
   line-height: var(--lh-wordmark);
@@ -49,6 +55,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .mast__nav {
   display: flex;
+  flex-shrink: 0;
   gap: var(--space-6);
   font-family: var(--font-mono);
   font-size: var(--fs-nav);
@@ -71,6 +78,23 @@ img { max-width: 100%; height: auto; display: block; }
   gap: var(--grid-gap);
 }
 @media (max-width: 720px) {
+  :root {
+    --page-pad-x: var(--space-5);
+    --page-pad-y: var(--space-8);
+    --grid-gap: var(--space-8);
+  }
+
+  .mast {
+    grid-template-columns: 1fr;
+    row-gap: var(--space-4);
+    align-items: start;
+  }
+
+  .mast__nav {
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-5);
+  }
+
   .grid { grid-template-columns: 1fr; }
   .sidebar { order: 2; }
 }
