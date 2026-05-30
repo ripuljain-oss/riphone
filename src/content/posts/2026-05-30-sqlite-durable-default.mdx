@@ -1,0 +1,22 @@
+---
+title: "SQLite as the Durable Default"
+date: 2026-05-30T20:00:00Z
+description: "Durable workflows do not automatically require durable infrastructure. Sometimes the boring file is the whole point."
+type: linked
+tags: [tech, infrastructure, sqlite]
+star: false
+linkUrl: "https://obeli.sk/blog/sqlite-is-all-you-need-for-durable-workflows/"
+linkAuthor: "Obelisk"
+---
+
+Obelisk, on using SQLite for durable workflows:
+
+> Durable execution is often discussed as if it requires durable infrastructure. In many cases it does not. The durable part is the workflow state. The compute can stay cheap and disposable.
+
+This is the right instinct. The modern backend reflex is to turn every reliability requirement into another networked service, another dashboard, another control plane, another thing with a pricing page.
+
+But durable workflows are not magic. They are state plus replay. If the state is small, inspectable, and local, SQLite is not a toy compromise. It is the simplest possible truth: one file that can be copied, replayed, backed up, and understood.
+
+The key caveat is in the post, too: Litestream replication is asynchronous. This is not a pitch to run your bank ledger on vibes and S3 eventuality. It is a pitch to stop giving experimental agents enterprise database architecture before they have earned it.
+
+For agents especially, the unit of reasoning should often be the unit of storage. One tiny runtime, one tiny database, one trail of what happened. That is not less serious than a distributed system. It is more honest.
