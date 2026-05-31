@@ -1,8 +1,3 @@
----
-description: Astro stack, routes, and integrations (as built)
-alwaysApply: true
----
-
 # Stack
 
 **Astro 5** · static output · MDX content collections · deployed on Cloudflare.
@@ -12,7 +7,7 @@ alwaysApply: true
 ```
 src/
   site.ts                 # SITE url, name, author, xHandle, xUrl
-  content/posts/*.mdx     # posts (frontmatter in content.mdc)
+  content/posts/*.mdx     # posts (frontmatter in content.md)
   content/config.ts       # zod schema
   lib/posts.ts            # sort, paths, tags, slugify
   lib/seo.ts              # meta descriptions, JSON-LD helpers
@@ -50,3 +45,5 @@ handoff/                  # design reference (not all pages shipped)
 ## Don't add without ask
 
 Client router, analytics, comments, Tailwind without token mapping, `/sponsor` or `/notes` nav
+
+> Mirrored from `.cursor/rules/stack.mdc` for Grok / multi-agent use. Update both when rules evolve.

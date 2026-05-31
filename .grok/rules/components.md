@@ -1,8 +1,3 @@
----
-description: Component patterns — recurring blocks and class names
-alwaysApply: true
----
-
 # Components
 
 Names match `src/styles/components.css` / `handoff/reference/styles.css`.
@@ -41,3 +36,5 @@ Names match `src/styles/components.css` / `handoff/reference/styles.css`.
 ## Reuse rule
 
 New UI → existing primitives + tokens first. Document here before adding components.
+
+> Mirrored from `.cursor/rules/components.mdc` for Grok / multi-agent use. Update both when rules evolve.

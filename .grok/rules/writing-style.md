@@ -1,8 +1,3 @@
----
-description: Editorial voice — skeptical, sharp takedowns of tech bullshit (DF-inspired)
-alwaysApply: true
----
-
 # Writing style (skeptic first)
 
 riphone is **skeptical by default**. Ripul's posts call bullshit on tech —
@@ -118,3 +113,5 @@ link.
 
 **Strong link post:** Attribution → one-line setup → blockquote → two
 paragraphs dismantling the official story.
+
+> Mirrored from `.cursor/rules/writing-style.mdc` for Grok / multi-agent use. Update both when rules evolve.

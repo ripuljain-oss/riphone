@@ -1,8 +1,3 @@
----
-description: riphone — brand, site identity, editorial north star. Always applied.
-alwaysApply: true
----
-
 # riphone — project ground rules
 
 **Live site:** https://riphone.org · **Author:** Ripul Jain · **X:** [@bmbyslm](https://x.com/bmbyslm)
@@ -27,7 +22,7 @@ paraphrase whole articles. Layout overlap (sidebar, readable column) is fine;
 
 ## Editorial (locked)
 
-- **Skeptic first:** sharp takedowns of tech bullshit — hype, strategy theater, monopoly hand-waves, consumer-hostile moves. See `writing-style.mdc`.
+- **Skeptic first:** sharp takedowns of tech bullshit — hype, strategy theater, monopoly hand-waves, consumer-hostile moves. See `writing-style.md`.
 - DF-style compression: short paragraphs, sharp headlines, link posts with one blockquote + take
 - Ripul researches → pastes URL/notes in chat → agent drafts MDX → Ripul edits
 - **★** only on `type: essay` with `star: true` (originals). Linked posts: no star.
@@ -47,4 +42,6 @@ paraphrase whole articles. Layout overlap (sidebar, readable column) is fine;
 
 ## When in doubt
 
-`handoff/reference/*.html` for layout · `writing-style.mdc` for voice · `operations.mdc` for deploy
+`handoff/reference/*.html` for layout · `writing-style.md` for voice · `operations.md` for deploy
+
+> Mirrored from `.cursor/rules/project.mdc` for Grok / multi-agent use. Update both when rules evolve.

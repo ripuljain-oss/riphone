@@ -1,11 +1,3 @@
----
-description: Content schema, post types, SEO, and UI copy
-globs:
-  - "**/*.md"
-  - "**/*.mdx"
-  - "src/content/**/*"
----
-
 # Content
 
 ## File naming
@@ -67,3 +59,5 @@ different `date` times (e.g. `T19:00:00Z` vs `T20:00:00Z`).
 
 - Emoji; "I think"; bare URLs in prose; invented quotes
 - `Linked:` prefix in titles unless it *is* the take
+
+> Mirrored from `.cursor/rules/content.mdc` for Grok / multi-agent use. Update both when rules evolve.

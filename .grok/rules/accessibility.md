@@ -1,8 +1,3 @@
----
-description: Accessibility — landmarks, contrast, motion
-alwaysApply: true
----
-
 # Accessibility
 
 ## Landmarks
@@ -34,3 +29,5 @@ Keep `prefers-reduced-motion` block from `tokens.css`.
 
 - `★` on originals (`star: true` essays only): `aria-label="Original post"`
 - Wordmark link: `aria-label="riphone — home"`
+
+> Mirrored from `.cursor/rules/accessibility.mdc` for Grok / multi-agent use. Update both when rules evolve.

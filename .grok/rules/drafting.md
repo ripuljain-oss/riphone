@@ -1,8 +1,3 @@
----
-description: How to draft posts when Ripul brings research and links in chat
-alwaysApply: true
----
-
 # Drafting workflow
 
 Ripul researches, pastes links/notes, asks for **drafts** — he edits before publish.
@@ -15,7 +10,7 @@ Agent does not invent sources, quotes, or facts.
 3. Output MDX: frontmatter + body → `src/content/posts/YYYY-MM-DD-slug.mdx`
 4. Set `date` **newer than latest post** (check existing files or use current day + time)
 5. Write `description` (≤160 chars, punchy, not clickbait)
-6. Match `writing-style.mdc`
+6. Match `writing-style.md`
 
 Ask one question only if blocked (missing attribution or stance).
 
@@ -74,3 +69,5 @@ Cloudflare rebuilds from `main`. Do not commit/push unless asked.
 
 - Offer a tighter alternate title if obvious
 - Rewrite if Ripul gives a new angle — don't argue
+
+> Mirrored from `.cursor/rules/drafting.mdc` for Grok / multi-agent use. Update both when rules evolve.
