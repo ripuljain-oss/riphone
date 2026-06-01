@@ -1,0 +1,22 @@
+---
+title: "The Support Bot Was the Skeleton Key"
+date: 2026-06-01T20:00:00Z
+description: "Meta’s Instagram support AI turned account recovery into the attack surface. That is not automation. It is outsourced authority."
+type: linked
+tags: [tech, ai, security]
+star: false
+linkUrl: "https://www.0xsid.com/blog/meta-account-takeover-fiasco"
+linkAuthor: "Sid"
+---
+
+Sid, [writing about the Instagram account takeover fiasco](https://www.0xsid.com/blog/meta-account-takeover-fiasco):
+
+> The very fact that a $1.5 trillion company lacks robust guard rails and their support AI will just change anyone's linked email if you ask it nicely enough is so terrifying, if it weren't so funny.
+
+This is the inevitable endpoint of replacing support with a permissioned chatbot: the bot does not merely answer questions. It holds keys.
+
+Meta can call this patched and move on. Fine. The bug is patched. The architecture is still hilarious in the bleak way: a recovery flow trusted an AI support agent to distinguish a locked-out owner from an attacker with a VPN and a target username.
+
+Two-factor authentication did not save people because the system treated the attacker as the recovered owner. That is the whole indictment. Security controls downstream of a bad identity decision become decorative trim.
+
+The industry loves “AI support” because it sounds like cost reduction without consequence. Here is the consequence: the cheapest employee in the company got promoted to locksmith.
