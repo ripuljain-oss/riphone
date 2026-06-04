@@ -31,6 +31,10 @@ const topTags = tagCounts(posts).slice(0, 4);
         <li><a href={`/tags/${tag}`}>{tag} ({count})</a></li>
       ))}
     </ul>
+    <p class="sidebar__h">More</p>
+    <ul>
+      <li><a href="/gear">Gear</a></li>
+    </ul>
   </aside>
 
   <section aria-label="Latest posts">

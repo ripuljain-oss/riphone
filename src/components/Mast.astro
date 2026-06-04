@@ -2,7 +2,7 @@
 import { SITE } from '../site';
 
 interface Props {
-  current?: '/' | '/archive' | '/feed.xml';
+  current?: '/' | '/archive' | '/feed.xml' | '/gear';
 }
 
 const { current = '/' } = Astro.props;
@@ -10,6 +10,7 @@ const { current = '/' } = Astro.props;
 const links = [
   { href: '/', path: '/' as const, label: '/latest' },
   { href: '/archive', path: '/archive' as const, label: '/archive' },
+  { href: '/gear', path: '/gear' as const, label: '/gear' },
   { href: '/feed.xml', path: '/feed.xml' as const, label: '/feed.xml' },
 ];
 ---

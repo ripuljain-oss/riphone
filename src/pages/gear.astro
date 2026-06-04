@@ -1,0 +1,68 @@
+---
+import PageWithSidebar from '../layouts/PageWithSidebar.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { SITE } from '../site';
+import { collectionPageJsonLd } from '../lib/seo';
+
+const categories = [
+  {
+    id: 'cameras',
+    heading: 'Cameras',
+    items: [
+      {
+        name: 'Fujifilm X100VI',
+        desc: 'Fixed 35mm lens, 40MP sensor, built-in ND filter, film simulations that change how you see light. It slows you down on purpose — and that\'s the whole argument for it.',
+        href: 'https://amzn.to/4em7IAN',
+      },
+    ],
+  },
+];
+---
+
+<PageWithSidebar
+  title="Gear"
+  description="Things I love. Affiliate links — I earn a small commission if you buy."
+  jsonLd={collectionPageJsonLd('Gear', '/gear', 'Things I love.')}
+  current="/gear"
+>
+  <aside slot="sidebar" class="sidebar" aria-label="Gear categories">
+    <p class="sidebar__h">Categories</p>
+    <ul>
+      {categories.map((cat) => (
+        <li><a href={`#${cat.id}`}>{cat.heading}</a></li>
+      ))}
+    </ul>
+    <p class="sidebar__h">Disclosure</p>
+    <p class="gear-disclosure">
+      Amazon affiliate links. As an Amazon Associate I earn from qualifying purchases.
+      I only list things I love.
+    </p>
+  </aside>
+
+  <header>
+    <p class="page-title__eyebrow">/gear</p>
+    <h1 class="page-title__h1">Gear</h1>
+    <p class="page-title__desc">
+      Things I love. No sponsorships — these are personal picks.
+      Affiliate links below; I earn a small cut if you buy at no cost to you.
+    </p>
+  </header>
+
+  {categories.map((cat) => (
+    <section id={cat.id} aria-labelledby={`${cat.id}-h`} class="gear-section">
+      <h2 id={`${cat.id}-h`} class="section-h">{cat.heading}</h2>
+      <ul class="gear-list">
+        {cat.items.map((item) => (
+          <li class="gear-item">
+            <a class="gear-item__name link" href={item.href} target="_blank" rel="nofollow noopener noreferrer">
+              {item.name} →
+            </a>
+            <p class="gear-item__desc">{item.desc}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+
+  <SiteFooter route="/gear" />
+</PageWithSidebar>
