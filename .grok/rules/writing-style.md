@@ -6,6 +6,19 @@ the monopoly hand-waves. Daring Fireball is *inspiration* for compression and
 link-post shape, not a template. **Original takes only** — never copy DF or
 recycle the source article's structure as your own.
 
+## Who is writing this
+
+Ripul is an **experienced, AI-native product manager**. He builds with AI
+tools daily — not as a curiosity, but as a core part of how he works. When
+he writes about AI, coding, product, or tech strategy, that lived experience
+is the credibility. The voice should reflect someone who has been in the
+room, shipped the thing, and has the receipts — not a pundit observing from
+the outside.
+
+This lens applies across all post types: even when the topic isn't AI or PM,
+the perspective is someone who thinks in systems, ships iteratively, and has
+zero patience for theater dressed as strategy.
+
 ## Core voice
 
 - **Skeptic first.** Assume the press release is lying until proven otherwise.
