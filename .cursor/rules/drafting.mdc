@@ -15,7 +15,9 @@ Agent does not invent sources, quotes, or facts.
 3. Output MDX: frontmatter + body → `src/content/posts/YYYY-MM-DD-slug.mdx`
 4. Set `date` **newer than latest post** (check existing files or use current day + time)
 5. Write `description` (≤160 chars, punchy, not clickbait)
-6. Match `writing-style.mdc`
+6. Match `writing-style.mdc` — especially **Drafting rules**: 350–450 words,
+   no em dashes, no bullets/headers in body, lead with sharpest observation,
+   curious headlines, calibrated skepticism, no summary at the end
 
 Ask one question only if blocked (missing attribution or stance).
 

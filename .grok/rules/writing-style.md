@@ -24,8 +24,10 @@ zero patience for theater dressed as strategy.
 - **Skeptic first.** Assume the press release is lying until proven otherwise.
   The job is not to summarize — it's to find the gap between what they're
   saying and what's actually happening.
-- **Take a position.** "This is nonsense." "I don't buy it." "Terrific
-  piece." State the verdict; don't hide behind "I think" or "it seems."
+- **Calibrated takes.** State a verdict when the facts support it. Hold
+  skepticism with appropriate uncertainty when they don't. "This is nonsense"
+  and "I don't buy it" are fine when earned. "It seems" and "I think" are
+  not hedges to hide behind; they're honest when the data is messy.
 - **Short and punchy.** Prefer 1–3 sentence paragraphs. One idea per
   paragraph. Cut throat-clearing ("So", "Well", "In today's world").
 - **Dry wit is welcome.** Understatement, parenthetical asides, the
@@ -34,6 +36,24 @@ zero patience for theater dressed as strategy.
   opinion."
 - **Concrete over abstract.** Names, products, dates, numbers when they
   sharpen the point.
+
+## Drafting rules
+
+Apply on every draft:
+
+- **Short declarative sentences.** Vary length. Mix a five-word line with a
+  longer one. No run-ons.
+- **No em dashes.** Use commas, periods, or parentheses instead.
+- **No bullet points or headers in the body.** Title only. Prose paragraphs.
+- **Context paragraphs are allowed.** Not every paragraph needs a punchline.
+  Some exist to set the scene.
+- **Lead with the sharpest observation.** Not background, not throat-clearing.
+- **Target 350–450 words** for linked posts and essays. Notes and reviews
+  can be shorter.
+- **Cut anything that doesn't earn its place.** If a sentence doesn't add
+  information or pressure, delete it.
+- **Never summarize at the end.** Stop when the point is made. No recap
+  paragraph that repeats the intro.
 
 ## What to skewer
 
@@ -53,25 +73,27 @@ endorsement of something good use the same voice — no cheerleading either way.
 
 ## Headlines
 
-- **Sharp and specific.** The title is often the take:
-  `Define 'Boom' Please`, `Google I/O Keynote in 54 Seconds`.
-- **Link posts:** lead with the subject or a punchy reframe, not
-  "Thoughts on…" or "A look at…"
-- **No clickbait.** No question-mark headlines unless the question *is*
-  the joke.
+- **Curious, not clever.** Raise a question or name a tension the reader
+  wants resolved. Not a pun, not a mic-drop reframe.
+- **Specific.** Name the subject. `What Happened to SEO` beats
+  `Rethinking Discovery in the Agentic Era`.
+- **Link posts:** not "Thoughts on…" or "A look at…"
+- **No clickbait.** Question-mark headlines only when the question is
+  genuine, not manufactured.
 
 ## Link posts (`type: linked`)
 
 Structure (tight, in order):
 
 1. **Attribution line** — who wrote it, where (e.g. "Marcus Mendes,
-   reporting for 9to5Mac:"). Gift-link or primary URL in the lede if useful.
-2. **One short setup** — why you're linking it (one paragraph max).
+   reporting for 9to5Mac:").
+2. **Sharpest observation first** — the take, not setup. One paragraph.
 3. **Blockquote** — the single best pull quote from the source. Don't
    paste the whole article.
-4. **Commentary** — your angle in a few punchy paragraphs. **Find the lie,**
-   the contradiction, or the unstated motive. Disagree, connect dots, call
-   bullshit. **Do not restate** what the blockquote already said.
+4. **Commentary** — prose paragraphs only. Find the lie, the contradiction,
+   or the unstated motive. Disagree, connect dots, call bullshit when earned.
+   **Do not restate** what the blockquote already said. End on the sharpest
+   line, not a summary.
 
 ### Strategy skepticism (link posts)
 
@@ -87,15 +109,15 @@ When the source (or Ripul) says "the strategy is muddy" — **resolve it**, don'
 
 ## Essays (`type: essay`, `star: true`)
 
-- Open with the thesis — first paragraph states the point.
-- Build in short movements; use blockquotes and asides like DF long posts.
+- Open with the sharpest observation, not a wind-up.
+- Build in short prose movements. Blockquotes and asides OK; no headers.
 - Technical depth is fine; jargon without purpose is not.
-- End when you're done — no summary paragraph that repeats the intro.
+- 350–450 words. End when the point is made. No summary.
 
 ## Notes (`type: notes`)
 
-- One observation, 1–3 paragraphs. No blockquote required.
-- Can be a single sharp sentence plus one follow-up.
+- One observation. Shorter than linked/essay (under 350 words is fine).
+- No blockquote required. Prose only, no headers or bullets.
 
 ## Reviews (`type: review`)
 
@@ -107,7 +129,7 @@ When the source (or Ripul) says "the strategy is muddy" — **resolve it**, don'
 - Numbers under ten: words ("three apps", not "3 apps").
 - Links: `[natural anchor](url)` — never "click here" or bare URLs in prose.
 - Curly quotes for quoted speech and titles.
-- Em dashes for parentheticals; don't use em dashes as comma splices.
+- **No em dashes** in Ripul's prose. Commas, periods, or parentheses.
 - **No emoji.** Exclamation points only inside quoted speech.
 - Banned filler: delightful, seamless, revolutionary, game-changer,
   thoughtful experience, leverage (verb), utilize.
@@ -118,13 +140,13 @@ When the source (or Ripul) says "the strategy is muddy" — **resolve it**, don'
 There are some important points worth considering."
 
 **Strong:** "Apple's argument here is that only the letter of the law
-matters — and the letter of the injunction said nothing about commissions.
+matters. The letter of the injunction said nothing about commissions.
 Post-CASA, they might actually have something."
 
 **Weak link post:** Three paragraphs summarizing the Verge piece, then a
 link.
 
-**Strong link post:** Attribution → one-line setup → blockquote → two
+**Strong link post:** Attribution → sharpest observation → blockquote → two
 paragraphs dismantling the official story.
 
 > Mirrored from `.cursor/rules/writing-style.mdc` for Grok / multi-agent use. Update both when rules evolve.
