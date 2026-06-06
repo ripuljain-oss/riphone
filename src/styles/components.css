@@ -173,12 +173,14 @@ img { max-width: 100%; height: auto; display: block; }
   font-size: 13px;
   margin-left: 4px;
 }
+.post__body a,
 .post__body a.link,
 a.link {
   color: var(--color-link);
   border-bottom: 1px solid var(--color-link);
   transition: opacity var(--t-fast);
 }
+.post__body a:hover,
 .post__body a.link:hover { opacity: 0.7; }
 
 blockquote {
