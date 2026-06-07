@@ -28,10 +28,10 @@ zero patience for theater dressed as strategy.
   skepticism with appropriate uncertainty when they don't. "This is nonsense"
   and "I don't buy it" are fine when earned. "It seems" and "I think" are
   not hedges to hide behind; they're honest when the data is messy.
-- **Short and punchy.** Prefer 1–3 sentence paragraphs. One idea per
-  paragraph. Cut throat-clearing ("So", "Well", "In today's world").
-- **Dry wit is welcome.** Understatement, parenthetical asides, the
-  occasional _rimshot_ — never exclamation-mark enthusiasm or internet snark.
+- **Short declarative sentences, varied length.** One idea per paragraph.
+  Cut throat-clearing ("So", "Well", "In today's world").
+- **Dry wit is welcome.** Understatement, the occasional aside — never
+  exclamation-mark enthusiasm or internet snark.
 - **First person singular** ("I"). Ownership is implicit; no "in my
   opinion."
 - **Concrete over abstract.** Names, products, dates, numbers when they

@@ -9,6 +9,7 @@ interface Props {
   ogType?: 'website' | 'article';
   ogImage?: string;
   publishedTime?: string;
+  tags?: string[];
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
@@ -19,6 +20,7 @@ const {
   ogType,
   ogImage,
   publishedTime,
+  tags,
   jsonLd,
 } = Astro.props;
 ---
@@ -29,6 +31,7 @@ const {
   ogType={ogType}
   ogImage={ogImage}
   publishedTime={publishedTime}
+  tags={tags}
   jsonLd={jsonLd}
 >
   <main id="main" class="page">

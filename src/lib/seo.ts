@@ -44,6 +44,7 @@ export function blogPostingJsonLd(
     '@type': 'BlogPosting',
     headline: entry.data.title,
     description,
+    image: absoluteUrl('/og.png'),
     datePublished: published,
     dateModified: published,
     url,
@@ -67,6 +68,10 @@ export function blogPostingJsonLd(
     },
   };
 
+  if (entry.data.tags?.length) {
+    schema.keywords = entry.data.tags.join(', ');
+  }
+
   if (entry.data.linkUrl) {
     schema.citation = entry.data.linkUrl;
   }
@@ -86,7 +91,9 @@ export function webSiteJsonLd(): Record<string, unknown> {
       '@type': 'Person',
       name: SITE.author,
       url: SITE.xUrl,
+      sameAs: [SITE.xUrl],
     },
+    sameAs: [SITE.xUrl],
   };
 }
 

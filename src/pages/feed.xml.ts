@@ -18,6 +18,10 @@ export async function GET(context: { site: string | undefined }) {
       link: new URL(postPath(entry), site).href,
       description: postDescription(entry),
     })),
-    customData: `<author><name>${SITE.author}</name></author>`,
+    customData: [
+      `<atom:link href="${new URL('/feed.xml', site).href}" rel="self" type="application/rss+xml" />`,
+      `<language>en-us</language>`,
+      `<managingEditor>${SITE.author}</managingEditor>`,
+    ].join('\n'),
   });
 }

@@ -31,6 +31,7 @@ const publishedTime = entry.data.date.toISOString();
   description={description}
   ogType="article"
   publishedTime={publishedTime}
+  tags={entry.data.tags}
   jsonLd={blogPostingJsonLd(entry, description)}
   current="/"
 >

@@ -3,7 +3,7 @@ export const SITE = {
   url: 'https://riphone.org',
   name: 'riphone',
   description:
-    'A quiet log of notes about software, tools, and reading on screens.',
+    'Sharp takes on software, AI hype, and the tech industry — by Ripul Jain.',
   author: 'Ripul Jain',
   xHandle: '@bmbyslm',
   xUrl: 'https://x.com/bmbyslm',
