@@ -86,3 +86,25 @@ const filters = [
 
   <SiteFooter route="/archive" />
 </PageWithSidebar>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const type = params.get('type');
+
+  if (type) {
+    document.querySelectorAll<HTMLElement>('[data-type]').forEach((el) => {
+      el.hidden = el.dataset.type !== type;
+    });
+  }
+
+  document.querySelectorAll<HTMLAnchorElement>('.sidebar a[href]').forEach((a) => {
+    const url = new URL(a.href);
+    const linkType = url.searchParams.get('type') ?? 'all';
+    const active = type ? linkType === type : linkType === 'all';
+    if (active) {
+      a.setAttribute('aria-current', 'page');
+    } else {
+      a.removeAttribute('aria-current');
+    }
+  });
+</script>

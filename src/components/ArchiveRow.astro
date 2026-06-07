@@ -16,7 +16,7 @@ const d = entry.data.date;
 const showStar = entry.data.star;
 ---
 
-<li>
+<li data-type={entry.data.type}>
   <span class="archive-list__date">
     <time datetime={isoDate(d)}>{formatArchiveDate(d)}</time>
   </span>
