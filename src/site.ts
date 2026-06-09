@@ -2,6 +2,7 @@
 export const SITE = {
   url: 'https://riphone.org',
   name: 'riphone',
+  tagline: 'Sharp takes on software, AI, and the tech industry',
   description:
     'Sharp takes on software, AI hype, and the tech industry — by Ripul Jain.',
   author: 'Ripul Jain',

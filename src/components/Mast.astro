@@ -5,7 +5,7 @@ interface Props {
   current?: '/' | '/archive' | '/feed.xml' | '/gear';
 }
 
-const { current = '/' } = Astro.props;
+const { current } = Astro.props;
 
 const links = [
   { href: '/', path: '/' as const, label: '/latest' },

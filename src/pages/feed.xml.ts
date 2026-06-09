@@ -17,11 +17,11 @@ export async function GET(context: { site: string | undefined }) {
       pubDate: entry.data.date,
       link: new URL(postPath(entry), site).href,
       description: postDescription(entry),
+      categories: entry.data.tags,
     })),
     customData: [
       `<atom:link href="${new URL('/feed.xml', site).href}" rel="self" type="application/rss+xml" />`,
       `<language>en-us</language>`,
-      `<managingEditor>${SITE.author}</managingEditor>`,
     ].join('\n'),
   });
 }

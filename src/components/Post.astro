@@ -3,30 +3,41 @@ import type { CollectionEntry } from 'astro:content';
 import {
   formatDateline,
   isoDate,
+  postPath,
   postTitleHref,
 } from '../lib/posts';
 
 interface Props {
   entry: CollectionEntry<'posts'>;
+  /** h1 on the post's own permalink page, h2 in feeds. */
+  headingLevel?: 'h1' | 'h2';
 }
 
-const { entry } = Astro.props;
+const { entry, headingLevel = 'h2' } = Astro.props;
+const Heading = headingLevel;
 const { Content } = await entry.render();
 const d = entry.data.date;
 const titleHref = postTitleHref(entry);
+const permalink = postPath(entry);
+const isExternalTitle = titleHref !== permalink;
 const showStar = entry.data.star;
 ---
 
 <article class="post">
   <p class="post__dateline">
-    <time datetime={isoDate(d)}>{formatDateline(d)}</time>
+    <a href={permalink} aria-label={`Permalink: ${entry.data.title}`}>
+      <time datetime={isoDate(d)}>{formatDateline(d)}</time>
+    </a>
   </p>
-  <h2 class="post__title">
+  <Heading class="post__title">
     <a href={titleHref}>{entry.data.title}</a>
+    {isExternalTitle && (
+      <span class="post__ext" aria-label="External link">↗</span>
+    )}
     {showStar && (
       <span class="post__star" aria-label="Original post">★</span>
     )}
-  </h2>
+  </Heading>
   <div class="post__body">
     <Content />
   </div>

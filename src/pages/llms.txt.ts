@@ -1,5 +1,5 @@
-import { getAllPosts, postPath } from '../lib/posts';
-import { absoluteUrl } from '../lib/seo';
+import { getAllPosts, isoDate, postPath } from '../lib/posts';
+import { absoluteUrl, postDescription } from '../lib/seo';
 import { SITE } from '../site';
 
 export async function GET() {
@@ -28,7 +28,7 @@ export async function GET() {
     '',
     ...posts.map(
       (entry) =>
-        `- ${entry.data.title} (${entry.data.type}): ${absoluteUrl(postPath(entry))}`,
+        `- ${entry.data.title} (${entry.data.type}, ${isoDate(entry.data.date)}): ${absoluteUrl(postPath(entry))} — ${postDescription(entry)}`,
     ),
     '',
     '## Notes for AI systems',

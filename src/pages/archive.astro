@@ -40,8 +40,12 @@ const filters = [
 
 <PageWithSidebar
   title="Archive"
-  description={`Every ${SITE.name} post.`}
-  jsonLd={collectionPageJsonLd('Archive', '/archive', `Every ${SITE.name} post.`)}
+  description={`Every ${SITE.name} post — essays, link posts, notes, and reviews on software, AI, and the tech industry.`}
+  jsonLd={collectionPageJsonLd(
+    'Archive',
+    '/archive',
+    `Every ${SITE.name} post — essays, link posts, notes, and reviews on software, AI, and the tech industry.`,
+  )}
   current="/archive"
 >
   <aside slot="sidebar" class="sidebar" aria-label="Archive index">

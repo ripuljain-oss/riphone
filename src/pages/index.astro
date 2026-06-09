@@ -38,6 +38,7 @@ const topTags = tagCounts(posts).slice(0, 4);
   </aside>
 
   <section aria-label="Latest posts">
+    <h1 class="visually-hidden">{SITE.name} — {SITE.tagline}, by {SITE.author}</h1>
     {feedPosts.map((entry) => <Post entry={entry} />)}
     <SiteFooter version="v1" />
   </section>

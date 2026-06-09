@@ -1,13 +1,15 @@
 ---
 import PageWithSidebar from '../../layouts/PageWithSidebar.astro';
-import Post from '../../components/Post.astro';
 import SiteFooter from '../../components/SiteFooter.astro';
 import { SITE } from '../../site';
-import { collectionPageJsonLd } from '../../lib/seo';
+import { collectionPageJsonLd, postDescription } from '../../lib/seo';
 import {
+  formatDateline,
   getAllPosts,
   getAllTags,
   getPostsByTag,
+  isoDate,
+  postPath,
   tagCounts,
 } from '../../lib/posts';
 
@@ -23,13 +25,13 @@ const { tag } = Astro.props;
 const allPosts = await getAllPosts();
 const posts = getPostsByTag(allPosts, tag);
 const tags = tagCounts(allPosts);
-const description = `${posts.length} post${posts.length === 1 ? '' : 's'} tagged “${tag}” on ${SITE.name}.`;
+const description = `${posts.length} post${posts.length === 1 ? '' : 's'} tagged “${tag}” on ${SITE.name} — ${SITE.tagline.toLowerCase()}.`;
 ---
 
 <PageWithSidebar
-  title={tag}
+  title={`Posts tagged ${tag}`}
   description={description}
-  jsonLd={collectionPageJsonLd(tag, `/tags/${tag}`, description)}
+  jsonLd={collectionPageJsonLd(`Posts tagged ${tag}`, `/tags/${tag}`, description)}
 >
   <aside slot="sidebar" class="sidebar" aria-label="Tags">
     <p class="sidebar__h">Tags</p>
@@ -61,7 +63,22 @@ const description = `${posts.length} post${posts.length === 1 ? '' : 's'} tagged
     {posts.length === 0 ? (
       <p>No posts with this tag.</p>
     ) : (
-      posts.map((entry) => <Post entry={entry} />)
+      <ul class="tag-list">
+        {posts.map((entry) => (
+          <li class="tag-list__item">
+            <p class="post__dateline">
+              <time datetime={isoDate(entry.data.date)}>
+                {formatDateline(entry.data.date)}
+              </time>
+            </p>
+            <h2 class="tag-list__title">
+              <a href={postPath(entry)}>{entry.data.title}</a>
+              {entry.data.star && <span class="post__star" aria-label="Original post">★</span>}
+            </h2>
+            <p class="tag-list__desc">{postDescription(entry)}</p>
+          </li>
+        ))}
+      </ul>
     )}
     <SiteFooter route={`/tags/${tag}`} />
   </section>

@@ -1,0 +1,50 @@
+---
+import PageWithSidebar from '../layouts/PageWithSidebar.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import {
+  formatArchiveDate,
+  getAllPosts,
+  isoDate,
+  postPath,
+  typeLabel,
+} from '../lib/posts';
+
+const recent = (await getAllPosts()).slice(0, 5);
+---
+
+<PageWithSidebar title="404" description="Page not found." robots="noindex, follow">
+  <aside slot="sidebar" class="sidebar" aria-label="Site index">
+    <p class="sidebar__h">Go to</p>
+    <ul>
+      <li><a href="/">/latest</a></li>
+      <li><a href="/archive">/archive</a></li>
+      <li><a href="/gear">/gear</a></li>
+    </ul>
+  </aside>
+
+  <header>
+    <p class="page-title__eyebrow">/404</p>
+    <h1 class="page-title__h1">Page not found</h1>
+    <p class="page-title__desc">
+      Whatever was here isn't. The <a class="link" href="/archive">archive</a> has
+      everything that is.
+    </p>
+  </header>
+
+  <section aria-label="Recent posts">
+    <h2 class="section-h">Recent</h2>
+    <ul class="archive-list">
+      {recent.map((entry) => (
+        <li>
+          <span class="archive-list__date">
+            <time datetime={isoDate(entry.data.date)}>{formatArchiveDate(entry.data.date)}</time>
+          </span>
+          <a class="archive-list__title" href={postPath(entry)}>{entry.data.title}</a>
+          <span class="archive-list__tag">{typeLabel(entry.data.type)}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <SiteFooter route="/404" />
+</PageWithSidebar>

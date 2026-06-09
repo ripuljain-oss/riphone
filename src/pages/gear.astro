@@ -13,6 +13,7 @@ const categories = [
         name: 'Fujifilm X100VI',
         desc: 'Fixed 35mm lens, 40MP sensor, built-in ND filter, film simulations that change how you see light. It slows you down on purpose — and that\'s the whole argument for it.',
         href: 'https://amzn.to/4em7IAN',
+        review: '/2026/06/04/the-camera-that-makes-you-slow-down',
       },
     ],
   },
@@ -24,16 +25,20 @@ const categories = [
         name: 'Technivorm Moccamaster KBG Select',
         desc: 'Pour-over quality without the ritual. Copper heating element hits the right temperature, showerhead saturates the grounds evenly — without standing over a V60 for four minutes.',
         href: 'https://amzn.to/4obGrEt',
+        review: '/2026/06/06/the-moccamaster-does-the-ritual-part',
       },
     ],
   },
 ];
+
+const description =
+  'Cameras, coffee gear, and tools Ripul Jain actually uses, with links to the full reviews.';
 ---
 
 <PageWithSidebar
   title="Gear"
-  description="Things I love. Affiliate links — I earn a small commission if you buy."
-  jsonLd={collectionPageJsonLd('Gear', '/gear', 'Things I love.')}
+  description={description}
+  jsonLd={collectionPageJsonLd('Gear', '/gear', description)}
   current="/gear"
 >
   <aside slot="sidebar" class="sidebar" aria-label="Gear categories">
@@ -69,6 +74,11 @@ const categories = [
               {item.name} →
             </a>
             <p class="gear-item__desc">{item.desc}</p>
+            {item.review && (
+              <p class="gear-item__review">
+                <a href={item.review}>Read the review →</a>
+              </p>
+            )}
           </li>
         ))}
       </ul>

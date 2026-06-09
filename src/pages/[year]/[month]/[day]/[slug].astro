@@ -7,7 +7,7 @@ import { blogPostingJsonLd, postDescription } from '../../../../lib/seo';
 
 export async function getStaticPaths() {
   const posts = await getAllPosts();
-  return posts.map((entry) => {
+  return posts.map((entry, i) => {
     const d = entry.data.date;
     return {
       params: {
@@ -16,14 +16,19 @@ export async function getStaticPaths() {
         day: String(d.getUTCDate()).padStart(2, '0'),
         slug: postSlug(entry),
       },
-      props: { entry },
+      props: {
+        entry,
+        newer: posts[i - 1] ?? null,
+        older: posts[i + 1] ?? null,
+      },
     };
   });
 }
 
-const { entry } = Astro.props;
+const { entry, newer, older } = Astro.props;
 const description = postDescription(entry);
 const publishedTime = entry.data.date.toISOString();
+const tags = entry.data.tags;
 ---
 
 <PageWithSidebar
@@ -31,9 +36,8 @@ const publishedTime = entry.data.date.toISOString();
   description={description}
   ogType="article"
   publishedTime={publishedTime}
-  tags={entry.data.tags}
+  tags={tags}
   jsonLd={blogPostingJsonLd(entry, description)}
-  current="/"
 >
   <aside slot="sidebar" class="sidebar" aria-label="Post">
     <p class="sidebar__h">Back</p>
@@ -41,10 +45,38 @@ const publishedTime = entry.data.date.toISOString();
       <li><a href="/">/latest</a></li>
       <li><a href="/archive">/archive</a></li>
     </ul>
+    {tags.length > 0 && (
+      <>
+        <p class="sidebar__h">Tagged</p>
+        <ul>
+          {tags.map((tag) => (
+            <li><a href={`/tags/${tag}`}>{tag}</a></li>
+          ))}
+        </ul>
+      </>
+    )}
   </aside>
 
   <article>
-    <Post entry={entry} />
+    <Post entry={entry} headingLevel="h1" />
+    <nav class="post-nav" aria-label="Adjacent posts">
+      <div class="post-nav__cell">
+        {newer && (
+          <>
+            <span class="post-nav__label">← Newer</span>
+            <a href={postPath(newer)}>{newer.data.title}</a>
+          </>
+        )}
+      </div>
+      <div class="post-nav__cell post-nav__cell--right">
+        {older && (
+          <>
+            <span class="post-nav__label">Older →</span>
+            <a href={postPath(older)}>{older.data.title}</a>
+          </>
+        )}
+      </div>
+    </nav>
     <SiteFooter route={postPath(entry)} />
   </article>
 </PageWithSidebar>
