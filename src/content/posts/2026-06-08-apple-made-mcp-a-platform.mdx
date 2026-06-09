@@ -1,0 +1,26 @@
+---
+title: "Apple Made MCP a Platform. Nobody Covered It."
+description: "The Gemini deal ate every WWDC headline. The quieter announcement about MCP going platform-wide and App Intents replacing SiriKit is the one that changes what Siri can actually do."
+date: 2026-06-08T10:00:00Z
+type: linked
+tags: [tech, apple, ai]
+star: false
+linkUrl: "https://www.techtimes.com/articles/318005/20260608/wwdc-2026-app-intents-replaces-sirikit-gemini-siri-migration-clock-starts.htm"
+linkAuthor: "TechTimes"
+---
+
+TechTimes, on the developer migration Apple announced alongside the Gemini keynote:
+
+The Gemini headlines are a distraction. Apple paying Google a reported billion dollars a year to rebuild Siri is a contract with an expiration date. What Apple also announced, in the sessions most reporters skipped, will outlast it.
+
+App Intents is now the only path for third-party apps to integrate with Siri. The old SiriKit framework required Apple to define each intent category in advance, a whitelist model that produced a handful of blessed app types and an assistant most people stopped asking to do things. App Intents works differently: developers write Swift, the compiler generates structured metadata at build time, and the OS understands what the app can do without ever launching it. Alongside that shift, the Model Context Protocol, which first shipped quietly in Xcode in February, now extends platform-wide across iOS 27 and macOS 27.
+
+> "Apps that do not expose core actions via App Intents will be functionally invisible to a Siri."
+
+That is the stakes plainly stated. And the flip side is just as true: apps that do implement App Intents, backed by an MCP server, become nodes in Siri's agent graph without Apple pre-approving each capability. A scheduling tool for a regional medical practice. A parts database for an independent body shop. A legal document organizer that no enterprise vendor was ever going to negotiate a SiriKit category for. Those apps now have a path.
+
+I build with these protocols daily. The difference between "this AI can use your app if Apple negotiated the integration" and "this AI can use your app because it speaks the protocol" is the difference between opt-in and infrastructure. MCP at the OS layer is the latter. The platform just changed the default.
+
+Whether Siri actually becomes the agent it has always been announced as depends entirely on developers showing up. The article captures the chicken-and-egg problem clearly: developers may wait to see if consumers engage before building, while consumers won't engage until there's something worth engaging with. That loop is real. But the reason to be less pessimistic this time is that App Intents plus MCP lowers what showing up actually costs. You don't need to lobby Apple for a new intent category. You implement the protocol.
+
+The coverage treated MCP going platform-wide as a footnote to the Gemini story. It is the other way around.
