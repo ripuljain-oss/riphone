@@ -1,0 +1,18 @@
+---
+title: "The 27B Model That Fits in Your Pocket"
+date: 2026-09-18T12:00:00Z
+description: "PrismML compressed a 27B reasoning model down to 5.9GB with 98% of the performance intact. The future of AI is local — and it's arriving faster than the datacenter guys want to admit."
+type: linked
+tags: [ai, models, privacy, hardware]
+star: false
+linkUrl: "https://techcrunch.com/2026/09/17/prismml-hopes-its-tiny-llm-could-change-how-we-all-use-ai/"
+linkAuthor: "TechCrunch"
+---
+
+A Caltech compression startup just squeezed a 27-billion-parameter reasoning model into 5.9 gigabytes. PrismML's Bonsai 2 keeps 98% of Qwen3.8 27B's benchmark performance at a tenth of the memory, and the rumor mill says Apple is already knocking.
+
+The trick is ternary weights: instead of storing each weight in 16 bits, they collapse them to +1, −1, or 0. That's it. A 9-10x memory reduction, nearly zero performance loss, and the original Bonsai has already been downloaded 11 million times. Next target: models in the several-hundred-billion-parameter range, which their CEO says are actually *easier* to compress without losing capability.
+
+This is the story the datacenter industry least wants told. Every week there's another headline about $10 billion GPU clusters and the infinite compute buildout — but meanwhile, compression is quietly making yesterday's frontier models runnable on hardware you already own. The compute flywheel assumption has a leak in it.
+
+The kicker, via adviser Ion Stoica: intelligence that runs on your device is free and private. No API bill, no prompt leaving your phone. That's the end state of this trend, and PrismML just moved it several years closer.
