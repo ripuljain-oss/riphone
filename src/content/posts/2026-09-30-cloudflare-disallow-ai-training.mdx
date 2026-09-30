@@ -1,0 +1,24 @@
+---
+title: "Cloudflare Will Let Google Keep the Page and Lose the Training Set"
+date: 2026-09-30T15:01:00Z
+description: "Cloudflare's Disallow AI Training keeps search crawlers while refusing training. A preference is still not a law."
+type: linked
+tags: [tech, ai, business]
+star: false
+linkUrl: "https://blog.cloudflare.com/accountable-mixed-use-ai-crawlers/"
+linkAuthor: "Bryan Becker, Cloudflare"
+---
+
+Bryan Becker, for [Cloudflare](https://blog.cloudflare.com/accountable-mixed-use-ai-crawlers/):
+
+On September 15 Cloudflare shipped Disallow AI Training. The pitch is simple: stay in Google's and Apple's and Microsoft's search indexes, and tell those same mixed-use crawlers they may not train on what they fetch.
+
+> Without proper controls, website owners have long faced a difficult tradeoff: allow your content to be used for AI training, or risk losing discoverability in search.
+
+That tradeoff was the product. One crawler doing search and training meant refusing training also meant refusing the index. Cloudflare's bet is that Accountable operators will honor a robots preference instead of making you choose. Apple and Google already have Extended / Google-Extended style opt-outs. Microsoft says Bing will respect a robots no-training preference in early 2027; until then Cloudflare's new switch does not automatically tell Bingbot via robots.txt.
+
+Look at the numbers they published. Less than 1% of Cloudflare sites block search bots. About 17% already try to block training somehow. Publishers want the ranking. They want the training refusal as a free side dish.
+
+A preference published in robots.txt is still a preference. Trainers that ignore it get blocked at the edge when Cloudflare can identify them. That is useful. It is not a statute. The interesting claim is the political economy: Google would rather keep the index relationship than fight every site that flips Disallow. If that holds, the setting matters. If it does not, you still have Block, and Block takes search with it.
+
+SEO Was for Humans was about bots becoming the majority of requests. This is the publisher control panel for that world: keep the search crawler, try to starve the training set. Whether the big labs actually starve is the part robots.txt never settled.
