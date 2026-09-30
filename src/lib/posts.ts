@@ -99,6 +99,38 @@ export function getPostsByTag(posts: PostEntry[], tag: string): PostEntry[] {
   return posts.filter((p) => p.data.tags.includes(tag));
 }
 
+/**
+ * Other posts to link from a permalink page.
+ * Shared tags rank first (more overlap wins). Remaining slots, and
+ * ties, fall back to recency — same order as `getAllPosts()`.
+ * The current post is always excluded. Input order does not matter.
+ */
+export function relatedPosts(
+  current: PostEntry,
+  posts: PostEntry[],
+  limit = 3,
+): PostEntry[] {
+  if (limit <= 0) return [];
+  const tags = new Set(current.data.tags);
+  return posts
+    .filter((entry) => entry.id !== current.id)
+    .map((entry) => {
+      let overlap = 0;
+      for (const tag of entry.data.tags) {
+        if (tags.has(tag)) overlap += 1;
+      }
+      return { entry, overlap };
+    })
+    .sort((a, b) => {
+      if (b.overlap !== a.overlap) return b.overlap - a.overlap;
+      const diff = postDate(b.entry).getTime() - postDate(a.entry).getTime();
+      if (diff !== 0) return diff;
+      return b.entry.id.localeCompare(a.entry.id);
+    })
+    .slice(0, limit)
+    .map((row) => row.entry);
+}
+
 export function tagCounts(posts: PostEntry[]): { tag: string; count: number }[] {
   const map = new Map<string, number>();
   for (const p of posts) {

@@ -1,0 +1,31 @@
+---
+import { postPath, type PostEntry } from '../lib/posts';
+
+interface Props {
+  posts: PostEntry[];
+}
+
+const { posts } = Astro.props;
+---
+
+{
+  posts.length > 0 && (
+    <section class="related" aria-labelledby="related-h">
+      <h2 id="related-h" class="related__h">More from riphone</h2>
+      <ul class="related__list">
+        {posts.map((entry) => (
+          <li>
+            <a href={postPath(entry)}>
+              {entry.data.title}
+              {entry.data.star && (
+                <span class="post__star" aria-label="Original post">
+                  ★
+                </span>
+              )}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}
