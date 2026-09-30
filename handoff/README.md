@@ -84,8 +84,8 @@ Sample prompt to seed a fresh chat:
 | Topic              | Decision                                              |
 | ------------------ | ----------------------------------------------------- |
 | Aesthetic          | Mono Ink + Terracotta (the C1a direction)             |
-| Body type          | Newsreader (Google Fonts, variable opsz axis)         |
-| UI type            | JetBrains Mono                                        |
+| Body type          | Newsreader (self-hosted, 16pt text cut)               |
+| UI type            | JetBrains Mono (self-hosted variable)                 |
 | Accent             | `#d97757` terracotta                                  |
 | Background         | `#fafafa` warm off-white (not pure white)             |
 | Foreground         | `#14151a` ink (not pure black)                        |

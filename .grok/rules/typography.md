@@ -20,7 +20,7 @@ Post titles stay mono at 18px semi-bold — do not switch to serif.
 
 ## Don'ts
 
-- Preconnect Google Fonts; `display=swap`
+- Do not load fonts.googleapis.com or fonts.gstatic.com. Newsreader and JetBrains Mono are self-hosted in `src/styles/fonts.css` (`font-display: swap`)
 - No uppercase on body; no sizes outside token scale
 - Italic for `<em>` and quoted titles only
 
