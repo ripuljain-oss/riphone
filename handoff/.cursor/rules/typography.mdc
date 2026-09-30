@@ -59,9 +59,9 @@ hierarchy, add a new token first.
 
 ## Don'ts
 
-- No web font swap flash — preconnect to `fonts.gstatic.com` and use
-  `display=swap`. The page should fall back to Georgia / monospace
-  cleanly.
+- Do not request fonts.googleapis.com or fonts.gstatic.com. Self-hosted
+  faces live in `src/styles/fonts.css` with `font-display: swap`. The page
+  should fall back to Georgia / monospace cleanly.
 - No `text-transform: uppercase` on body copy. Mono labels only.
 - No font sizes outside the token scale.
 - No italic everywhere — italic is reserved for `<em>` inside body

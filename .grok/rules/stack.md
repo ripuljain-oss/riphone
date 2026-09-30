@@ -11,7 +11,7 @@ src/
   content/config.ts       # zod schema
   lib/posts.ts            # sort, paths, tags, slugify, relatedPosts
   lib/seo.ts              # meta descriptions, JSON-LD helpers
-  layouts/Base.astro      # meta, OG, RSS link, JSON-LD slot, GA4 gtag
+  layouts/Base.astro      # meta, OG, RSS link, JSON-LD slot, GA4 gtag, font preload
   layouts/PageWithSidebar.astro
   components/             # Mast, Post, RelatedPosts, ArchiveRow, SiteFooter, JsonLd
   pages/
@@ -23,6 +23,7 @@ src/
     archive.txt.ts
     llms.txt.ts           # dynamic; lists all posts
   styles/tokens.css
+  styles/fonts.css        # self-hosted Newsreader + JetBrains Mono
   styles/components.css
 public/
   robots.txt
