@@ -75,9 +75,9 @@ pnpm add -D @astrojs/mdx @astrojs/sitemap @astrojs/rss
 
 - No client-side router. No Astro `<Image>` until there's an actual image
   asset to optimize.
-- No analytics scripts. (If you must measure traffic, use a server-side
-  log analyser like GoatCounter or Plausible's no-cookie embed — and put
-  it in the site footer with a privacy note.)
+- GA4 (`G-HR04HH0MY5`) is approved and installed in `src/layouts/Base.astro`.
+  Do not add other analytics scripts, pixels, or measurement IDs without an
+  explicit ask.
 - No comment system. The site is one-way.
 - No Tailwind unless you also wire `tokens.json` into `theme.extend` so
   utilities resolve to tokens. Otherwise it competes with the token layer

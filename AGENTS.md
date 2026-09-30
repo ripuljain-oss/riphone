@@ -33,7 +33,7 @@ Then load file-scoped rules as relevant:
 - **Design tokens only.** All colors, fonts, spacing from `handoff/tokens.css` or `src/styles/tokens.css`. No inline hex or ad-hoc values.
 - **Content model:** `type: linked | essay | notes | review`. Stars (`★`) only on original essays with `star: true`.
 - **Deploy:** Commit/push to `main` **only when explicitly asked**. Cloudflare auto-builds from Git.
-- **No surprises:** Do not add Tailwind, analytics, comments, client router, or new pages (`/sponsor`, `/notes`) without being told.
+- **No surprises:** Do not add Tailwind, comments, client router, extra analytics, or new pages (`/sponsor`, `/notes`) without being told. GA4 (`G-HR04HH0MY5`) is approved and installed in `src/layouts/Base.astro`. Do not add other trackers or measurement IDs without an explicit ask.
 - **Writing:** Skeptical, sharp takedowns of tech bullshit; short paragraphs; one blockquote max for linked posts; no "I think", no emoji.
 
 ---
