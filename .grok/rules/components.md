@@ -19,6 +19,13 @@ Names match `src/styles/components.css` / `handoff/reference/styles.css`.
 
 - Date · title (same href rules as Post) · type tag (Essay/Linked/Notes/Review)
 
+## `<RelatedPosts>`
+
+- Permalink pages only, after the post and before adjacent nav
+- Heading: "More from riphone"
+- Up to three titles linking via `postPath()` (on-site permalink, including when the post title itself points off-site)
+- Selection: `relatedPosts()` in `lib/posts.ts`. Shared tags first, then newest other posts. Current post excluded
+
 ## `<SiteFooter>`
 
 - Left: `© {year}` + `SITE.xHandle` linked to `SITE.xUrl`

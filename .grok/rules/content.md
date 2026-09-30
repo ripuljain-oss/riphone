@@ -46,6 +46,7 @@ different `date` times (e.g. `T19:00:00Z` vs `T20:00:00Z`).
 - `description` in frontmatter → meta, OG, Twitter, BlogPosting JSON-LD
 - Omitted → auto from first ~160 chars of body (Markdown stripped)
 - Post pages: `BlogPosting` + `article` OG; home: `WebSite`; archive/tags: `CollectionPage`
+- Permalink pages append "More from riphone": up to three on-site links from `relatedPosts()` (shared tags, then recent). Do not add related-link lists inside MDX
 - `public/robots.txt`, dynamic `/llms.txt`, `/sitemap-index.xml`
 
 ## UI copy

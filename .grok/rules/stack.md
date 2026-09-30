@@ -9,11 +9,11 @@ src/
   site.ts                 # SITE url, name, author, xHandle, xUrl
   content/posts/*.mdx     # posts (frontmatter in content.md)
   content/config.ts       # zod schema
-  lib/posts.ts            # sort, paths, tags, slugify
+  lib/posts.ts            # sort, paths, tags, slugify, relatedPosts
   lib/seo.ts              # meta descriptions, JSON-LD helpers
   layouts/Base.astro      # meta, OG, RSS link, JSON-LD slot, GA4 gtag
   layouts/PageWithSidebar.astro
-  components/             # Mast, Post, ArchiveRow, SiteFooter, JsonLd
+  components/             # Mast, Post, RelatedPosts, ArchiveRow, SiteFooter, JsonLd
   pages/
     index.astro
     archive.astro
@@ -37,6 +37,7 @@ handoff/                  # design reference (not all pages shipped)
 - `astro.config.mjs`: `site: 'https://riphone.org'`, `trailingSlash: 'never'`, sitemap + mdx
 - Permalink slug: from **title** via `slugify()` in `lib/posts.ts`, not filename
 - Linked posts: `postTitleHref()` → external URL on title; `postPath()` for permalink
+- Related posts: `<RelatedPosts>` on permalink pages. `relatedPosts()` picks up to three other posts (shared tags, then newest). Links use `postPath()`, never `linkUrl`
 
 ## Integrations
 

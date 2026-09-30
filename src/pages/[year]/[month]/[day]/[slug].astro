@@ -1,8 +1,9 @@
 ---
 import PageWithSidebar from '../../../../layouts/PageWithSidebar.astro';
 import Post from '../../../../components/Post.astro';
+import RelatedPosts from '../../../../components/RelatedPosts.astro';
 import SiteFooter from '../../../../components/SiteFooter.astro';
-import { getAllPosts, postPath, postSlug } from '../../../../lib/posts';
+import { getAllPosts, postPath, postSlug, relatedPosts } from '../../../../lib/posts';
 import { blogPostingJsonLd, postDescription } from '../../../../lib/seo';
 
 export async function getStaticPaths() {
@@ -29,6 +30,7 @@ const { entry, newer, older } = Astro.props;
 const description = postDescription(entry);
 const publishedTime = entry.data.date.toISOString();
 const tags = entry.data.tags;
+const related = relatedPosts(entry, await getAllPosts());
 ---
 
 <PageWithSidebar
@@ -59,6 +61,7 @@ const tags = entry.data.tags;
 
   <article>
     <Post entry={entry} headingLevel="h1" />
+    <RelatedPosts posts={related} />
     <nav class="post-nav" aria-label="Adjacent posts">
       <div class="post-nav__cell">
         {newer && (
