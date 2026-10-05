@@ -1,0 +1,26 @@
+---
+title: "Apple Scheduled Two Different Funerals for Rosetta"
+date: 2026-10-05T15:20:00Z
+description: "Two Apple Developer News posts eight days apart disagree on whether macOS 26 or macOS 27 is the last release with Rosetta."
+type: linked
+tags: [tech, apple]
+star: false
+linkUrl: "https://developer.apple.com/news/?id=k1mtkt1k"
+linkAuthor: "Apple Developer News"
+---
+
+Apple Developer News, on [1 September](https://developer.apple.com/news/?id=w5ngl9k2) and [9 September](https://developer.apple.com/news/?id=k1mtkt1k):
+
+Apple is ending Rosetta, the translation layer it shipped in 2020 so Intel apps would run on Apple silicon Macs. It has now told developers when. Twice, eight days apart, with two different answers.
+
+The 1 September post, "Upcoming changes to Rosetta support for Intel-based macOS apps," lists macOS 27 as the "Final release to support Rosetta." The 9 September post, the one opening App Store submissions for the new OS releases, says this:
+
+> macOS 26 is the final release supporting Intel Mac computers and Rosetta
+
+Those are not the same release. Read one way, Intel-only apps get another year on an M-series Mac. Read the other way, they ran out of road with macOS 26, along with every Intel Mac.
+
+There is a charitable merge. Intel hardware support and the translation layer are different things, and the 1 September post promises Rosetta will keep working for "older, unmaintained gaming titles that rely on Intel-based frameworks." Maybe macOS 27 keeps a narrow Rosetta and Intel Macs simply stop at 26. But the newer post puts both in one sentence, and the older one is not clean either. It calls macOS 27 the final Rosetta release, then tells developers to get users onto native builds to "ensure the app runs when macOS 27 ships this fall."
+
+The advice drifted too. The first post says to build a universal binary that runs on both architectures. The second says to set the Xcode build architecture to arm64 only and drop Intel.
+
+For developers the fix is the same either way: ship native. For someone holding an old Intel-only app with no update coming, the gap is a year of their software working or not. A company that stages a transition down to a 26.4 warning notification can publish one date and leave it alone.
